@@ -1,0 +1,89 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import { t } from "@/i18n/utils";
+
+interface Props {
+  title: string;
+  category: string;
+  role: string;
+  period: string;
+  teamSize?: number;
+  keywords: string[];
+  heroGradient: string;
+  relatedPublications?: string[];
+  locale?: string;
+  currentPath?: string;
+}
+
+const {
+  title, category, role, period, teamSize, keywords,
+  heroGradient, relatedPublications, locale = "en", currentPath = "/",
+} = Astro.props;
+
+const base = locale === "ko" ? "/ko" : "";
+---
+
+<BaseLayout title={title} locale={locale} currentPath={currentPath}>
+  <!-- Hero -->
+  <div class={`bg-gradient-to-br ${heroGradient} py-20`}>
+    <div class="max-w-5xl mx-auto px-6 md:px-8">
+      <a href={`${base}/projects`} class="text-sm text-white/60 hover:text-white transition-colors mb-4 inline-flex items-center gap-1">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        {t("nav.projects", locale)}
+      </a>
+      <h1 class="text-3xl md:text-4xl font-bold text-white mt-2">{title}</h1>
+    </div>
+  </div>
+
+  <div class="max-w-5xl mx-auto px-6 md:px-8 py-12">
+    <div class="grid md:grid-cols-[1fr_280px] gap-12">
+      <!-- Main content -->
+      <div class="prose max-w-none">
+        <slot />
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="space-y-6 text-sm">
+        <div class="p-5 rounded-xl border border-[var(--border)] bg-[var(--surface)] space-y-3">
+          <div>
+            <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-1">{t("project.role", locale)}</p>
+            <p class="font-medium">{role}</p>
+          </div>
+          <div>
+            <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-1">{t("project.period", locale)}</p>
+            <p class="font-medium">{period}</p>
+          </div>
+          {teamSize && (
+            <div>
+              <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-1">{t("project.team", locale)}</p>
+              <p class="font-medium">{teamSize} members</p>
+            </div>
+          )}
+          <div>
+            <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-1">{t("publication.keywords", locale)}</p>
+            <div class="flex flex-wrap gap-1.5 mt-1">
+              {keywords.map((kw) => (
+                <span class="text-xs px-2 py-0.5 rounded-md bg-[var(--surface-2)] text-[var(--text-muted)] border border-[var(--border)]">{kw}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {relatedPublications && relatedPublications.length > 0 && (
+          <div class="p-5 rounded-xl border border-[var(--border)] bg-[var(--surface)]">
+            <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-3">{t("project.related", locale)}</p>
+            <ul class="space-y-2">
+              {relatedPublications.map((slug) => (
+                <li>
+                  <a href={`${base}/publications#${slug}`} class="text-[var(--accent)] hover:underline text-xs">{slug.toUpperCase()}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

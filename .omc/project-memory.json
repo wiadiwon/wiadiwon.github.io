@@ -1,0 +1,350 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1776390065804,
+  "projectRoot": "C:\\github\\wiadiwon.github.io",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "_assets": {
+      "path": "_assets",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1776390065772,
+      "keyFiles": [
+        "asset.md",
+        "CV_SeoyoungLee.pdf",
+        "Portfolio_SeoyoungLee.pdf"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "_assets\\extract_figures_v2.py",
+      "accessCount": 14,
+      "lastAccessed": 1776400583826,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 5,
+      "lastAccessed": 1776400449074,
+      "type": "directory"
+    },
+    {
+      "path": "_assets\\papers\\INDEX.md",
+      "accessCount": 4,
+      "lastAccessed": 1776401526697,
+      "type": "file"
+    },
+    {
+      "path": "src\\content.config.ts",
+      "accessCount": 4,
+      "lastAccessed": 1776402761418,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\extract_figures.py",
+      "accessCount": 3,
+      "lastAccessed": 1776400331854,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\01_VIPCGRL\\summary.md",
+      "accessCount": 3,
+      "lastAccessed": 1776401531002,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\00_HL-PCGRL\\summary.md",
+      "accessCount": 3,
+      "lastAccessed": 1776401541432,
+      "type": "file"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 3,
+      "lastAccessed": 1776401739384,
+      "type": "file"
+    },
+    {
+      "path": "src\\styles\\globals.css",
+      "accessCount": 3,
+      "lastAccessed": 1776402698740,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\diagnose_figures.py",
+      "accessCount": 2,
+      "lastAccessed": 1776400797585,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\02_IPCGRL\\summary.md",
+      "accessCount": 2,
+      "lastAccessed": 1776401531360,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\04_ACD\\summary.md",
+      "accessCount": 2,
+      "lastAccessed": 1776401531875,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\05_Smart_Insole\\summary.md",
+      "accessCount": 2,
+      "lastAccessed": 1776401532287,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\03_MIPCGRL\\summary.md",
+      "accessCount": 2,
+      "lastAccessed": 1776401542024,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\06_SCOTTI\\summary.md",
+      "accessCount": 2,
+      "lastAccessed": 1776401542038,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 2,
+      "lastAccessed": 1776401865626,
+      "type": "file"
+    },
+    {
+      "path": "astro.config.mjs",
+      "accessCount": 2,
+      "lastAccessed": 1776402761561,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\01_VIPCGRL\\figures\\MANIFEST.md",
+      "accessCount": 1,
+      "lastAccessed": 1776398431302,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\02_IPCGRL\\figures\\MANIFEST.md",
+      "accessCount": 1,
+      "lastAccessed": 1776398437929,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\03_MIPCGRL\\figures\\MANIFEST.md",
+      "accessCount": 1,
+      "lastAccessed": 1776398441659,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\04_ACD\\figures\\MANIFEST.md",
+      "accessCount": 1,
+      "lastAccessed": 1776398447590,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\05_Smart_Insole\\figures\\MANIFEST.md",
+      "accessCount": 1,
+      "lastAccessed": 1776398453258,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\06_SCOTTI\\figures\\MANIFEST.md",
+      "accessCount": 1,
+      "lastAccessed": 1776398459185,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\00_HL-PCGRL\\figures\\MANIFEST.md",
+      "accessCount": 1,
+      "lastAccessed": 1776398467794,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\04_ACD\\figures\\fig_01_Overview_of_the_proposed_method_The_ego-.png",
+      "accessCount": 1,
+      "lastAccessed": 1776400345102,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\00_HL-PCGRL\\figures\\fig_6_6_6_Effect_of_Including_Data_in_Encoder_Fi.png",
+      "accessCount": 1,
+      "lastAccessed": 1776400345714,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\01_VIPCGRL\\figures\\fig_01_Overview_of_VIPCGRL_The_text-level-sketc.png",
+      "accessCount": 1,
+      "lastAccessed": 1776400355955,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\papers\\05_Smart_Insole\\figures\\fig_05_Tactile_sensing_hardware_Our_insole-type.png",
+      "accessCount": 1,
+      "lastAccessed": 1776400356640,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\extract_figures_v3.py",
+      "accessCount": 1,
+      "lastAccessed": 1776400839131,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\run_extraction.py",
+      "accessCount": 1,
+      "lastAccessed": 1776400858045,
+      "type": "file"
+    },
+    {
+      "path": "_assets\\links.yaml",
+      "accessCount": 1,
+      "lastAccessed": 1776401527012,
+      "type": "file"
+    },
+    {
+      "path": "tsconfig.json",
+      "accessCount": 1,
+      "lastAccessed": 1776401788207,
+      "type": "file"
+    },
+    {
+      "path": "src\\env.d.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776401798571,
+      "type": "file"
+    },
+    {
+      "path": "src\\i18n\\en.json",
+      "accessCount": 1,
+      "lastAccessed": 1776401824387,
+      "type": "file"
+    },
+    {
+      "path": "src\\i18n\\ko.json",
+      "accessCount": 1,
+      "lastAccessed": 1776401829748,
+      "type": "file"
+    },
+    {
+      "path": "src\\content\\publications\\en\\2025-vipcgrl.md",
+      "accessCount": 1,
+      "lastAccessed": 1776401893629,
+      "type": "file"
+    },
+    {
+      "path": "src\\content\\publications\\en\\2025-ipcgrl.md",
+      "accessCount": 1,
+      "lastAccessed": 1776401899658,
+      "type": "file"
+    },
+    {
+      "path": "src\\content\\publications\\en\\2025-mipcgrl.md",
+      "accessCount": 1,
+      "lastAccessed": 1776401904297,
+      "type": "file"
+    },
+    {
+      "path": "src\\content\\publications\\en\\2025-acd.md",
+      "accessCount": 1,
+      "lastAccessed": 1776401910076,
+      "type": "file"
+    },
+    {
+      "path": "src\\content\\publications\\en\\2024-smart-insole.md",
+      "accessCount": 1,
+      "lastAccessed": 1776401916384,
+      "type": "file"
+    },
+    {
+      "path": "src\\content\\publications\\en\\2025-scotti.md",
+      "accessCount": 1,
+      "lastAccessed": 1776401921492,
+      "type": "file"
+    },
+    {
+      "path": "src\\content\\publications\\ko\\2025-vipcgrl.md",
+      "accessCount": 1,
+      "lastAccessed": 1776401932431,
+      "type": "file"
+    },
+    {
+      "path": "src\\content\\publications\\ko\\2025-ipcgrl.md",
+      "accessCount": 1,
+      "lastAccessed": 1776401937729,
+      "type": "file"
+    },
+    {
+      "path": "src\\content\\publications\\ko\\2025-mipcgrl.md",
+      "accessCount": 1,
+      "lastAccessed": 1776401941472,
+      "type": "file"
+    },
+    {
+      "path": "src\\content\\publications\\ko\\2025-acd.md",
+      "accessCount": 1,
+      "lastAccessed": 1776401946889,
+      "type": "file"
+    },
+    {
+      "path": "src\\content\\publications\\ko\\2024-smart-insole.md",
+      "accessCount": 1,
+      "lastAccessed": 1776401949971,
+      "type": "file"
+    },
+    {
+      "path": "src\\content\\publications\\ko\\2025-scotti.md",
+      "accessCount": 1,
+      "lastAccessed": 1776401952248,
+      "type": "file"
+    },
+    {
+      "path": "src\\content\\projects\\en\\vipcgrl.mdx",
+      "accessCount": 1,
+      "lastAccessed": 1776401971002,
+      "type": "file"
+    },
+    {
+      "path": "src\\content\\projects\\en\\smart-insole.mdx",
+      "accessCount": 1,
+      "lastAccessed": 1776401982809,
+      "type": "file"
+    },
+    {
+      "path": "src\\content\\projects\\en\\acd.mdx",
+      "accessCount": 1,
+      "lastAccessed": 1776401992215,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

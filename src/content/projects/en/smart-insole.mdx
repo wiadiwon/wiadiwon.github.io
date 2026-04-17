@@ -1,0 +1,49 @@
+---
+title: "Smart Insole: Tactile-Based Human Sensing"
+category: funded
+role: "Research Contributor (2nd Author)"
+period: "2023.03 – 2025.07"
+teamSize: 6
+summary: "3D human pose estimation and action recognition from foot pressure data using a wireless high-resolution smart insole sensor (GIST-MIT collaboration)."
+keywords:
+  - "pose estimation"
+  - "tactile sensing"
+  - "wearable"
+  - "multi-task learning"
+  - "transformer"
+featured: true
+heroGradient: "from-teal-900 via-cyan-900 to-slate-900"
+relatedPublications:
+  - "smart-insole"
+  - "scotti"
+hasDetail: true
+lang: en
+slug: "smart-insole"
+---
+
+## Motivation
+
+Vision-based human pose estimation is ubiquitous but suffers from occlusion and privacy concerns. Foot pressure data, captured by a wearable insole, offers a privacy-preserving, location-independent alternative. This GIST-MIT collaboration project explored how much information about full-body 3D pose can be recovered from foot contact alone.
+
+## Issues
+
+- Prior insole/carpet sensors are large, fixed, and expensive.
+- 600+ sensors per foot generates high-dimensional temporal streams requiring efficient architectures.
+- Ground truth 3D keypoints require synchronized multi-camera capture.
+- Generalizing to unseen participants and actions is challenging with small datasets.
+
+## Method
+
+**Smart Insole (NeurIPS Workshop 2024):**
+Dual CNN encoders process left/right foot pressure frames → 3D heatmap decoder predicts 19 keypoints. A linear probe on frozen encoders classifies actions (96.88% accuracy).
+
+**SCOTTI (arXiv 2025) — Extension:**
+CNN + Transformer (SCOTTI) jointly optimizes three tasks: pose estimation, action classification, and novel *action progress prediction* (first in tactile sensing). Multi-task learning improves all three tasks simultaneously over single-task baselines.
+
+## Results & Contribution
+
+- **7.43 cm** average pose estimation error on 7 actions (NeurIPS 2024).
+- **96.88%** action classification accuracy as a linear probe.
+- **SCOTTI**: first tactile action *progress* prediction; 96.63 mm MPJPE, 90.06% accuracy.
+- Dataset: 15 participants, 200,000+ synchronized frames, 8 actions (to be open-sourced).
+- Hardware: ~$50 wireless insole with 500+ sensors per foot.

@@ -1,0 +1,24 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import { getCollection } from "astro:content";
+import { t } from "@/i18n/utils";
+
+const locale = "ko";
+const allProjects = await getCollection("projectsKo");
+const sorted = allProjects.sort((a, b) => (b.data.featured ? 1 : -1) - (a.data.featured ? 1 : -1));
+---
+
+<BaseLayout title="프로젝트" locale={locale} currentPath="/ko/projects">
+  <div class="max-w-5xl mx-auto px-6 md:px-8 py-16">
+    <SectionHeading title={t("section.projects", locale)} subtitle="지원 연구, 학술 연구, 산학 협력 프로젝트." />
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {sorted.map((proj, i) => (
+        <div class={`reveal reveal-delay-${Math.min(i + 1, 4)}`}>
+          <ProjectCard title={proj.data.title} category={proj.data.category} role={proj.data.role} period={proj.data.period} teamSize={proj.data.teamSize} summary={proj.data.summary} keywords={proj.data.keywords} heroGradient={proj.data.heroGradient} slug={proj.data.slug} hasDetail={proj.data.hasDetail} locale={locale} />
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

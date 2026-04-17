@@ -1,0 +1,47 @@
+---
+title: "Automatic Curriculum Design for Human-AI Coordination"
+category: academic
+role: "Research Contributor (3rd Author)"
+period: "2023.09 – 2024.08"
+teamSize: 4
+summary: "Extends multi-agent Unsupervised Environment Design (UED) to zero-shot human-AI coordination using return-based utility and prioritized co-player sampling in Overcooked-AI."
+keywords:
+  - "human-AI coordination"
+  - "curriculum learning"
+  - "multi-agent RL"
+  - "zero-shot generalization"
+featured: true
+heroGradient: "from-orange-900 via-amber-900 to-slate-900"
+relatedPublications:
+  - "acd"
+hasDetail: true
+lang: en
+slug: "acd"
+---
+
+## Motivation
+
+Training AI agents to coordinate with humans in cooperative tasks is difficult because humans are unpredictable and environments vary. Most zero-shot coordination methods focus on partner diversity but ignore environment diversity. This project asked: *can UED — originally designed for competitive games — be adapted to improve zero-shot human-AI coordination in cooperative settings?*
+
+## Issues
+
+- Existing multi-agent UED (MAESTRO) uses regret-based utility designed for competitive zero-sum games — inappropriate for cooperative tasks.
+- Standard self-play co-player sampling ignores joint environment/co-player difficulty.
+- Evaluating against real humans (not just proxies) is essential but rarely done.
+
+## Method
+
+**Automatic Curriculum Design (ACD):**
+
+1. **Return-based utility**: replaces regret with cumulative return as a measure of learning potential in cooperative settings.
+2. **Prioritized co-player sampling**: selects the co-player whose worst-performing environment has the lowest return, jointly optimizing the lower bound over all environment/co-player pairs.
+3. **Replay distribution**: blends rank-based coordination score priority with staleness-based freshness.
+
+Trained in Overcooked-AI on 6,000 automatically generated layouts; evaluated on 5 graduated-difficulty test layouts.
+
+## Results & Contribution
+
+- Outperforms MAESTRO, Robust PLR, and Domain Randomization on all 5 evaluation layouts.
+- **Real human study (N=20)**: highest collaborativeness and preference ratings.
+- Demonstrates return > regret for cooperative UED.
+- Published in IEEE Access (2025).

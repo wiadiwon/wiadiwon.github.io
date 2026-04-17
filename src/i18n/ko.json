@@ -1,0 +1,52 @@
+{
+  "nav.publications": "논문",
+  "nav.projects": "프로젝트",
+  "nav.cv": "이력서",
+
+  "hero.title": "AI 엔지니어",
+  "hero.subtitle": "강화학습, 멀티모달 표현 학습, 인간-AI 상호작용 연구자.",
+  "hero.cta.publications": "논문 보기",
+  "hero.cta.cv": "CV 다운로드",
+
+  "section.publications": "논문",
+  "section.projects": "프로젝트",
+  "section.featured_publications": "주요 논문",
+  "section.featured_projects": "주요 프로젝트",
+  "section.news": "소식",
+
+  "publication.under_review": "심사 중",
+  "publication.published": "게재됨",
+  "publication.preprint": "프리프린트",
+  "publication.co_first": "* 공동 제1저자",
+  "publication.pdf": "PDF",
+  "publication.code": "코드",
+  "publication.doi": "DOI",
+  "publication.bibtex": "BibTeX",
+  "publication.abstract": "초록",
+  "publication.keywords": "키워드",
+  "publication.filter.label": "키워드로 필터",
+  "publication.filter.clear": "초기화",
+  "publication.filter.empty": "해당하는 논문이 없습니다.",
+
+  "project.category.funded": "지원 연구",
+  "project.category.academic": "학술 연구",
+  "project.category.industry": "산학 협력",
+  "project.role": "역할",
+  "project.period": "기간",
+  "project.team": "팀 규모",
+  "project.related": "관련 논문",
+  "project.view_all": "전체 프로젝트 보기",
+
+  "cv.download_en": "CV 다운로드 (영문)",
+  "cv.download_ko": "CV 다운로드 (국문)",
+  "cv.education": "학력",
+  "cv.experience": "연구 경력",
+  "cv.publications": "논문",
+  "cv.skills": "기술 스택",
+  "cv.awards": "수상 및 장학금",
+
+  "footer.built_with": "Astro로 제작",
+  "lang.toggle": "English",
+  "theme.toggle.dark": "다크",
+  "theme.toggle.light": "라이트"
+}

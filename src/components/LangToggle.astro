@@ -1,0 +1,20 @@
+---
+import { t, getLocalePath } from "@/i18n/utils";
+
+interface Props {
+  locale: string;
+  currentPath: string;
+}
+
+const { locale, currentPath } = Astro.props;
+const targetLocale = locale === "en" ? "ko" : "en";
+const targetPath = getLocalePath(currentPath, targetLocale);
+---
+
+<a
+  href={targetPath}
+  class="px-3 py-1.5 rounded-lg text-sm font-medium transition-colors hover:bg-[var(--surface)] text-[var(--text-muted)] hover:text-[var(--accent)] border border-[var(--border)]"
+  aria-label={`Switch to ${targetLocale === "ko" ? "Korean" : "English"}`}
+>
+  {t("lang.toggle", locale)}
+</a>

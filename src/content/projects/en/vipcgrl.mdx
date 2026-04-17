@@ -1,0 +1,54 @@
+---
+title: "VIPCGRL: Human-Aligned Procedural Level Generation"
+category: funded
+role: "Co-Principal Investigator"
+period: "2023.09 – 2025.07"
+teamSize: 5
+summary: "Multimodal (text + level + sketch) shared embedding for human-aligned procedural content generation via reinforcement learning."
+keywords:
+  - "PCGRL"
+  - "reinforcement learning"
+  - "multimodal"
+  - "contrastive learning"
+  - "human-AI alignment"
+featured: true
+heroGradient: "from-indigo-900 via-violet-900 to-slate-900"
+relatedPublications:
+  - "vipcgrl"
+  - "ipcgrl"
+  - "mipcgrl"
+hasDetail: true
+lang: en
+slug: "vipcgrl"
+---
+
+## Motivation
+
+Game level design is a creative process where human designers express intent through spatial structures, sketches, and natural language descriptions. Existing AI-driven procedural content generation (PCGRL) systems accept only scalar conditions, missing the rich communicative modalities humans naturally use. This project asks: *can an RL agent be trained to generate levels that look and feel like they were made by a human designer, while accepting flexible multi-modal instructions?*
+
+## Issues
+
+- Prior PCGRL methods (CPCGRL, IPCGRL) are limited to scalar or text-only inputs.
+- No existing system supports sketch-based level control — a common tool for game designers.
+- Generated levels lack human-likeness even when conditions are satisfied numerically.
+- Aligning an RL policy with human aesthetic preferences is an open problem.
+
+## Method
+
+**Two-phase training:**
+
+1. **Quadruple Contrastive Learning** — A shared 64-dimensional embedding space is trained to align text descriptions, level images, user sketches, and human/AI style signals via a multi-positive InfoNCE objective.
+
+2. **Human-Aligned DRL** — A PPO policy conditioned on the shared embedding receives an auxiliary similarity reward computed against a human reference database, encouraging the policy to produce levels closer to human style.
+
+The sketch input pipeline uses edge detection + spline interpolation to convert levels to 224×224 grayscale sketches, enabling zero-shot cross-modal generalization at inference time.
+
+## Results & Contribution
+
+- **Best human-likeness** among all baselines (TPKL-Div and ViT metrics).
+- **Zero-shot cross-modal**: model trained on text input generalizes to level/sketch inputs at inference.
+- **First PCGRL system** to support sketch as a control modality.
+- **First quadruple contrastive loss** aligning three modalities + human/AI style jointly.
+- Human evaluation confirms practical improvement in perceived human-likeness.
+
+This work extends the M.S. thesis (HL-PCGRL, GIST 2025) with additional visual modalities and became the flagship research of the lab's PCGRL line.

@@ -1,0 +1,65 @@
+---
+import { t } from "@/i18n/utils";
+
+interface Props {
+  title: string;
+  category: "funded" | "academic" | "industry";
+  role: string;
+  period: string;
+  teamSize?: number;
+  summary: string;
+  keywords: string[];
+  heroGradient: string;
+  slug: string;
+  hasDetail?: boolean;
+  locale?: string;
+}
+
+const {
+  title, category, role, period, teamSize, summary,
+  keywords, heroGradient, slug, hasDetail = true, locale = "en",
+} = Astro.props;
+
+const base = locale === "ko" ? "/ko" : "";
+
+const categoryColor: Record<string, string> = {
+  funded: "bg-indigo-500/15 text-indigo-400 border-indigo-500/30",
+  academic: "bg-sky-500/15 text-sky-400 border-sky-500/30",
+  industry: "bg-orange-500/15 text-orange-400 border-orange-500/30",
+};
+---
+
+<article class="group rounded-xl border border-[var(--border)] bg-[var(--surface)] overflow-hidden hover:border-[var(--accent)]/40 hover:shadow-lg hover:shadow-[var(--accent)]/5 transition-all duration-300 reveal">
+  <!-- Hero gradient -->
+  <div class={`h-28 bg-gradient-to-br ${heroGradient} flex items-end p-4`}>
+    <span class={`text-xs px-2 py-0.5 rounded-full border font-medium ${categoryColor[category]}`}>
+      {t(`project.category.${category}`, locale)}
+    </span>
+  </div>
+
+  <div class="p-5">
+    <!-- Title -->
+    <h3 class="font-semibold text-[var(--text)] leading-snug mb-1 group-hover:text-[var(--accent)] transition-colors">
+      {hasDetail ? (
+        <a href={`${base}/projects/${slug}`} class="hover:underline">{title}</a>
+      ) : title}
+    </h3>
+
+    <!-- Meta -->
+    <p class="text-xs text-[var(--text-muted)] mb-3">
+      {role} · {period}{teamSize ? ` · Team of ${teamSize}` : ""}
+    </p>
+
+    <!-- Summary -->
+    <p class="text-sm text-[var(--text-muted)] leading-relaxed mb-3 line-clamp-2">{summary}</p>
+
+    <!-- Keywords -->
+    <div class="flex flex-wrap gap-1.5">
+      {keywords.slice(0, 4).map((kw) => (
+        <span class="text-xs px-2 py-0.5 rounded-md bg-[var(--surface-2)] text-[var(--text-muted)] border border-[var(--border)]">
+          {kw}
+        </span>
+      ))}
+    </div>
+  </div>
+</article>

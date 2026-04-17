@@ -1,0 +1,80 @@
+---
+import LangToggle from "./LangToggle.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+import { t } from "@/i18n/utils";
+
+interface Props {
+  locale: string;
+  currentPath: string;
+}
+
+const { locale, currentPath } = Astro.props;
+const base = locale === "ko" ? "/ko" : "";
+---
+
+<header class="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur-sm">
+  <nav class="max-w-5xl mx-auto px-6 md:px-8 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a href={`${base}/`} class="font-bold text-[var(--text)] hover:text-[var(--accent)] transition-colors text-lg">
+      Seo-Young Lee
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-6">
+      <a href={`${base}/publications`} class="text-sm text-[var(--text-muted)] hover:text-[var(--text)] transition-colors">
+        {t("nav.publications", locale)}
+      </a>
+      <a href={`${base}/projects`} class="text-sm text-[var(--text-muted)] hover:text-[var(--text)] transition-colors">
+        {t("nav.projects", locale)}
+      </a>
+      <a href={`${base}/cv`} class="text-sm text-[var(--text-muted)] hover:text-[var(--text)] transition-colors">
+        {t("nav.cv", locale)}
+      </a>
+      <div class="flex items-center gap-2 ml-2 pl-2 border-l border-[var(--border)]">
+        <LangToggle locale={locale} currentPath={currentPath} />
+        <ThemeToggle />
+      </div>
+    </div>
+
+    <!-- Mobile: toggles + hamburger -->
+    <div class="flex md:hidden items-center gap-2">
+      <LangToggle locale={locale} currentPath={currentPath} />
+      <ThemeToggle />
+      <button
+        id="nav-hamburger"
+        aria-label="Open menu"
+        class="p-2 rounded-lg text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition-colors"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile panel -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-t border-[var(--border)] bg-[var(--bg)]"
+  >
+    <div class="max-w-5xl mx-auto px-6 py-4 flex flex-col gap-4">
+      <a href={`${base}/publications`} class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors py-1">
+        {t("nav.publications", locale)}
+      </a>
+      <a href={`${base}/projects`} class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors py-1">
+        {t("nav.projects", locale)}
+      </a>
+      <a href={`${base}/cv`} class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors py-1">
+        {t("nav.cv", locale)}
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const hamburger = document.getElementById("nav-hamburger");
+  const menu = document.getElementById("mobile-menu");
+  hamburger?.addEventListener("click", () => {
+    menu?.classList.toggle("hidden");
+  });
+</script>

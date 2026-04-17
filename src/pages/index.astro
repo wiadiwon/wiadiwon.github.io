@@ -1,0 +1,146 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import PublicationCard from "@/components/PublicationCard.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import { getCollection } from "astro:content";
+import { t } from "@/i18n/utils";
+
+const locale = "en";
+const pubs = await getCollection("publicationsEn", (e) => e.data.featured);
+const projects = await getCollection("projectsEn", (e) => e.data.featured);
+
+const sortedPubs = pubs.sort((a, b) => b.data.year - a.data.year);
+const sortedProjects = projects.sort((a, b) => (b.data.featured ? 1 : -1));
+
+const news = [
+  { date: "2025.08", text: "Preprint SCOTTI (arXiv) released — tactile multi-task learning with progress prediction." },
+  { date: "2025.08", text: "VIPCGRL submitted to IEEE Transactions on Games (under review)." },
+  { date: "2025.07", text: "M.S. degree conferred — GIST AI Graduate School." },
+];
+---
+
+<BaseLayout title="Seo-Young Lee" locale={locale} currentPath="/">
+  <!-- Hero -->
+  <section class="max-w-5xl mx-auto px-6 md:px-8 py-20 md:py-28">
+    <div class="grid md:grid-cols-[1fr_auto] gap-12 items-center">
+      <div>
+        <p class="text-sm text-[var(--accent)] font-medium mb-3 tracking-wider uppercase animate-fade-in">
+          AI Engineer · Researcher
+        </p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text)] leading-tight mb-4 animate-fade-in-up">
+          Seo-Young Lee
+          <span class="block text-[var(--accent)]">이서영</span>
+        </h1>
+        <p class="text-lg text-[var(--text-muted)] leading-relaxed mb-8 max-w-xl animate-fade-in-up" style="animation-delay:0.1s">
+          {t("hero.subtitle", locale)}
+        </p>
+        <div class="flex flex-wrap gap-3 animate-fade-in-up" style="animation-delay:0.2s">
+          <a href="/publications"
+            class="px-5 py-2.5 rounded-lg bg-[var(--accent)] text-white font-medium text-sm hover:bg-[var(--accent-hover)] transition-colors">
+            {t("hero.cta.publications", locale)}
+          </a>
+          <a href="/cv"
+            class="px-5 py-2.5 rounded-lg border border-[var(--border)] text-[var(--text)] font-medium text-sm hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors">
+            {t("hero.cta.cv", locale)}
+          </a>
+          <a href="https://github.com/wiadiwon" target="_blank" rel="noopener noreferrer"
+            class="px-5 py-2.5 rounded-lg border border-[var(--border)] text-[var(--text-muted)] font-medium text-sm hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors">
+            GitHub
+          </a>
+          <a href="https://scholar.google.co.kr/citations?user=rwY5jgMAAAAJ&hl=ko" target="_blank" rel="noopener noreferrer"
+            class="px-5 py-2.5 rounded-lg border border-[var(--border)] text-[var(--text-muted)] font-medium text-sm hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors">
+            Scholar
+          </a>
+        </div>
+      </div>
+
+      <!-- Avatar -->
+      <div class="hidden md:flex flex-col items-center gap-4 animate-fade-in">
+        <div class="w-36 h-36 rounded-full bg-gradient-to-br from-indigo-600 to-violet-700 flex items-center justify-center text-4xl font-bold text-white shadow-2xl shadow-indigo-500/20 ring-4 ring-[var(--border)]">
+          SL
+        </div>
+        <div class="text-center">
+          <p class="text-sm font-medium text-[var(--text)]">M.S. AI, GIST</p>
+          <p class="text-xs text-[var(--text-muted)]">Seoul, Korea</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Research interests -->
+    <div class="mt-12 flex flex-wrap gap-2 animate-fade-in-up" style="animation-delay:0.3s">
+      {["Reinforcement Learning", "Procedural Content Generation", "Multimodal Representation", "Human-AI Interaction", "Human Pose Estimation"].map((interest) => (
+        <span class="text-xs px-3 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] text-[var(--text-muted)]">
+          {interest}
+        </span>
+      ))}
+    </div>
+  </section>
+
+  <!-- News -->
+  <section class="max-w-5xl mx-auto px-6 md:px-8 pb-16">
+    <SectionHeading title={t("section.news", locale)} />
+    <ul class="space-y-3">
+      {news.map((item, i) => (
+        <li class={`flex gap-4 items-start text-sm reveal reveal-delay-${i + 1}`}>
+          <span class="text-[var(--accent)] font-mono text-xs mt-0.5 shrink-0 w-16">{item.date}</span>
+          <span class="text-[var(--text-muted)]">{item.text}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Featured Publications -->
+  <section class="max-w-5xl mx-auto px-6 md:px-8 pb-16">
+    <div class="flex items-center justify-between mb-10">
+      <SectionHeading title={t("section.featured_publications", locale)} />
+      <a href="/publications" class="text-sm text-[var(--accent)] hover:underline shrink-0 ml-4">View all →</a>
+    </div>
+    <div class="grid gap-4">
+      {sortedPubs.map((pub, i) => (
+        <div class={`reveal reveal-delay-${i + 1}`}>
+          <PublicationCard
+            title={pub.data.title}
+            authors={pub.data.authors}
+            year={pub.data.year}
+            venue={pub.data.venue}
+            status={pub.data.status}
+            keywords={pub.data.keywords}
+            abstract={pub.data.abstract}
+            pdf={pub.data.pdf}
+            code={pub.data.code}
+            doi={pub.data.doi}
+            locale={locale}
+          />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="max-w-5xl mx-auto px-6 md:px-8 pb-24">
+    <div class="flex items-center justify-between mb-10">
+      <SectionHeading title={t("section.featured_projects", locale)} />
+      <a href="/projects" class="text-sm text-[var(--accent)] hover:underline shrink-0 ml-4">{t("project.view_all", locale)} →</a>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      {sortedProjects.map((proj, i) => (
+        <div class={`reveal reveal-delay-${i + 1}`}>
+          <ProjectCard
+            title={proj.data.title}
+            category={proj.data.category}
+            role={proj.data.role}
+            period={proj.data.period}
+            teamSize={proj.data.teamSize}
+            summary={proj.data.summary}
+            keywords={proj.data.keywords}
+            heroGradient={proj.data.heroGradient}
+            slug={proj.data.slug}
+            hasDetail={proj.data.hasDetail}
+            locale={locale}
+          />
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,108 @@
+---
+import { isAuthor, t } from "@/i18n/utils";
+
+interface Props {
+  title: string;
+  authors: string[];
+  year: number;
+  venue: string;
+  status: "published" | "under_review" | "preprint";
+  keywords: string[];
+  abstract?: string;
+  pdf?: string;
+  code?: string;
+  doi?: string;
+  locale?: string;
+  compact?: boolean;
+}
+
+const {
+  title, authors, year, venue, status, keywords,
+  abstract, pdf, code, doi, locale = "en", compact = false,
+} = Astro.props;
+
+const statusColor: Record<string, string> = {
+  published: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
+  under_review: "bg-amber-500/15 text-amber-400 border-amber-500/30",
+  preprint: "bg-violet-500/15 text-violet-400 border-violet-500/30",
+};
+---
+
+<article class="group p-5 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--accent)]/40 hover:shadow-lg hover:shadow-[var(--accent)]/5 transition-all duration-300 reveal">
+  <!-- Status + year -->
+  <div class="flex items-center gap-2 mb-3 flex-wrap">
+    <span class={`text-xs px-2 py-0.5 rounded-full border font-medium ${statusColor[status]}`}>
+      {t(`publication.${status}`, locale)}
+    </span>
+    <span class="text-xs text-[var(--text-muted)]">{year}</span>
+    <span class="text-xs text-[var(--text-muted)]">·</span>
+    <span class="text-xs text-[var(--text-muted)] italic">{venue}</span>
+  </div>
+
+  <!-- Title -->
+  <h3 class="font-semibold text-[var(--text)] leading-snug mb-2 group-hover:text-[var(--accent)] transition-colors">
+    {title}
+  </h3>
+
+  <!-- Authors -->
+  <p class="text-sm text-[var(--text-muted)] mb-3">
+    {authors.map((author, i) => {
+      const hasAsterisk = author.endsWith("*");
+      const name = author.replace(/\*/g, "");
+      const bold = isAuthor(name);
+      return (
+        <>
+          <span class={bold ? "font-semibold text-[var(--text)]" : ""}>
+            {name}{hasAsterisk && <sup class="text-[var(--accent)]">*</sup>}
+          </span>
+          {i < authors.length - 1 && ", "}
+        </>
+      );
+    })}
+  </p>
+
+  <!-- Abstract (non-compact) -->
+  {!compact && abstract && (
+    <p class="text-sm text-[var(--text-muted)] leading-relaxed mb-3 line-clamp-3">{abstract}</p>
+  )}
+
+  <!-- Keywords -->
+  <div class="flex flex-wrap gap-1.5 mb-3">
+    {keywords.map((kw) => (
+      <span
+        class="keyword-chip text-xs px-2 py-0.5 rounded-md bg-[var(--surface-2)] text-[var(--text-muted)] border border-[var(--border)]"
+        data-keyword={kw}
+      >
+        {kw}
+      </span>
+    ))}
+  </div>
+
+  <!-- Links -->
+  <div class="flex gap-3 flex-wrap">
+    {pdf && (
+      <a href={pdf} target="_blank" rel="noopener noreferrer"
+        class="text-xs font-medium text-[var(--accent)] hover:underline flex items-center gap-1">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+        {t("publication.pdf", locale)}
+      </a>
+    )}
+    {code && (
+      <a href={code} target="_blank" rel="noopener noreferrer"
+        class="text-xs font-medium text-[var(--accent)] hover:underline flex items-center gap-1">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+        </svg>
+        {t("publication.code", locale)}
+      </a>
+    )}
+    {doi && (
+      <a href={doi.startsWith("http") ? doi : `https://doi.org/${doi}`} target="_blank" rel="noopener noreferrer"
+        class="text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text)] hover:underline">
+        {t("publication.doi", locale)}
+      </a>
+    )}
+  </div>
+</article>

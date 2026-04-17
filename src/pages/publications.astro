@@ -1,0 +1,142 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import PublicationCard from "@/components/PublicationCard.astro";
+import { getCollection } from "astro:content";
+import { t } from "@/i18n/utils";
+
+const locale = "en";
+const allPubs = await getCollection("publicationsEn");
+const sorted = allPubs.sort((a, b) => b.data.year - a.data.year || (a.data.status === "published" ? -1 : 1));
+
+const allKeywords = [...new Set(sorted.flatMap((p) => p.data.keywords))].sort();
+---
+
+<BaseLayout
+  title="Publications"
+  description="Seo-Young Lee's publications in reinforcement learning, PCGRL, tactile sensing, and human-AI coordination."
+  locale={locale}
+  currentPath="/publications"
+>
+  <div class="max-w-5xl mx-auto px-6 md:px-8 py-16">
+    <SectionHeading
+      title={t("section.publications", locale)}
+      subtitle="6 publications in RL, PCG, multimodal representation, and human sensing."
+    />
+
+    <!-- Keyword filter -->
+    <div class="mb-8">
+      <p class="text-sm text-[var(--text-muted)] mb-3">{t("publication.filter.label", locale)}</p>
+      <div class="flex flex-wrap gap-2" id="keyword-filters">
+        {allKeywords.map((kw) => (
+          <button
+            class="filter-btn text-xs px-3 py-1 rounded-full border border-[var(--border)] text-[var(--text-muted)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors data-[active=true]:bg-[var(--accent)] data-[active=true]:text-white data-[active=true]:border-[var(--accent)]"
+            data-keyword={kw}
+          >
+            {kw}
+          </button>
+        ))}
+        <button id="clear-filters" class="text-xs px-3 py-1 rounded-full text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors hidden">
+          {t("publication.filter.clear", locale)}
+        </button>
+      </div>
+    </div>
+
+    <!-- Publications list -->
+    <div class="grid gap-4" id="pub-list">
+      {sorted.map((pub, i) => (
+        <div
+          class={`pub-item reveal reveal-delay-${Math.min(i + 1, 4)}`}
+          data-keywords={JSON.stringify(pub.data.keywords)}
+          id={pub.data.slug}
+        >
+          <PublicationCard
+            title={pub.data.title}
+            authors={pub.data.authors}
+            year={pub.data.year}
+            venue={pub.data.venue}
+            status={pub.data.status}
+            keywords={pub.data.keywords}
+            abstract={pub.data.abstract}
+            pdf={pub.data.pdf}
+            code={pub.data.code}
+            doi={pub.data.doi}
+            locale={locale}
+          />
+        </div>
+      ))}
+    </div>
+
+    <p id="empty-msg" class="hidden text-center text-[var(--text-muted)] py-12">
+      {t("publication.filter.empty", locale)}
+    </p>
+
+    <!-- Co-first note -->
+    <p class="mt-8 text-xs text-[var(--text-muted)]">
+      <sup class="text-[var(--accent)]">*</sup> {t("publication.co_first", locale)}
+    </p>
+  </div>
+</BaseLayout>
+
+<script>
+  const btns = document.querySelectorAll<HTMLElement>(".filter-btn");
+  const items = document.querySelectorAll<HTMLElement>(".pub-item");
+  const clearBtn = document.getElementById("clear-filters");
+  const emptyMsg = document.getElementById("empty-msg");
+  const active = new Set<string>();
+
+  function updateURL() {
+    const url = new URL(window.location.href);
+    if (active.size > 0) {
+      url.searchParams.set("keywords", [...active].join(","));
+    } else {
+      url.searchParams.delete("keywords");
+    }
+    history.replaceState(null, "", url.toString());
+  }
+
+  function applyFilter() {
+    let visible = 0;
+    items.forEach((item) => {
+      const kws: string[] = JSON.parse(item.dataset.keywords || "[]");
+      const show = active.size === 0 || [...active].some((k) => kws.includes(k));
+      item.style.display = show ? "" : "none";
+      if (show) visible++;
+    });
+    emptyMsg?.classList.toggle("hidden", visible > 0);
+    clearBtn?.classList.toggle("hidden", active.size === 0);
+  }
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const kw = btn.dataset.keyword!;
+      if (active.has(kw)) {
+        active.delete(kw);
+        btn.dataset.active = "false";
+      } else {
+        active.add(kw);
+        btn.dataset.active = "true";
+      }
+      applyFilter();
+      updateURL();
+    });
+  });
+
+  clearBtn?.addEventListener("click", () => {
+    active.clear();
+    btns.forEach((b) => (b.dataset.active = "false"));
+    applyFilter();
+    updateURL();
+  });
+
+  // Init from URL
+  const params = new URLSearchParams(window.location.search);
+  const initial = params.get("keywords");
+  if (initial) {
+    initial.split(",").forEach((k) => {
+      active.add(k.trim());
+      btns.forEach((b) => { if (b.dataset.keyword === k.trim()) b.dataset.active = "true"; });
+    });
+    applyFilter();
+  }
+</script>

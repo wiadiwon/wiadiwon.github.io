@@ -1,0 +1,146 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import { getCollection } from "astro:content";
+import { t } from "@/i18n/utils";
+
+const locale = "en";
+const pubs = await getCollection("publicationsEn");
+const sorted = pubs.sort((a, b) => b.data.year - a.data.year);
+---
+
+<BaseLayout
+  title="CV"
+  description="Curriculum vitae of Seo-Young Lee — AI Engineer & Researcher."
+  locale={locale}
+  currentPath="/cv"
+>
+  <div class="max-w-5xl mx-auto px-6 md:px-8 py-16">
+    <!-- Header -->
+    <div class="mb-12 reveal">
+      <h1 class="text-4xl font-bold text-[var(--text)] mb-2">Seo-Young Lee</h1>
+      <p class="text-[var(--accent)] font-medium mb-1">{t("hero.title", locale)}</p>
+      <p class="text-[var(--text-muted)] text-sm">Seoul, Korea · <a href="mailto:seoyoung.john@gmail.com" class="hover:text-[var(--accent)]">seoyoung.john@gmail.com</a></p>
+      <div class="flex gap-3 mt-4">
+        <a href="/cv/CV_SeoyoungLee.pdf" download
+          class="px-4 py-2 rounded-lg bg-[var(--accent)] text-white text-sm font-medium hover:bg-[var(--accent-hover)] transition-colors flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          {t("cv.download_en", locale)}
+        </a>
+        <a href="/cv/CV_SeoyoungLee.pdf" download
+          class="px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--text)] text-sm font-medium hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          {t("cv.download_ko", locale)}
+        </a>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-[2fr_1fr] gap-12">
+      <div class="space-y-12">
+        <!-- Education -->
+        <section class="reveal">
+          <SectionHeading title={t("cv.education", locale)} />
+          <div class="space-y-6">
+            <div class="border-l-2 border-[var(--accent)] pl-5">
+              <p class="font-semibold text-[var(--text)]">M.S. Artificial Intelligence</p>
+              <p class="text-[var(--accent)] text-sm">GIST (Gwangju Institute of Science and Technology)</p>
+              <p class="text-[var(--text-muted)] text-sm">2023.08 – 2025.07 · GPA 4.20 / 4.50</p>
+              <p class="text-[var(--text-muted)] text-sm mt-1">Advisor: Prof. Kyung-Joong Kim</p>
+              <p class="text-[var(--text-muted)] text-sm">Thesis: Human-Like Procedural Level Generation via RL with Contrastive Language-State Embedding</p>
+            </div>
+            <div class="border-l-2 border-[var(--border)] pl-5">
+              <p class="font-semibold text-[var(--text)]">B.S. Computer Science & Engineering</p>
+              <p class="text-[var(--text-muted)] text-sm">Dongguk University</p>
+              <p class="text-[var(--text-muted)] text-sm">2017.03 – 2023.02 · GPA 3.96 / 4.50</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Publications -->
+        <section class="reveal">
+          <SectionHeading title={t("cv.publications", locale)} />
+          <ol class="space-y-4 list-none">
+            {sorted.map((pub, i) => (
+              <li class="flex gap-3 text-sm">
+                <span class="text-[var(--text-muted)] shrink-0 w-5 text-right">[{sorted.length - i}]</span>
+                <div>
+                  <span class="font-medium text-[var(--text)]">{pub.data.title}</span>
+                  <br/>
+                  <span class="text-[var(--text-muted)]">
+                    {pub.data.authors.map((a, ai) => {
+                      const clean = a.replace(/\*/g, "");
+                      const isSY = ["Seo-Young Lee","Seoyoung Lee"].some(v => clean === v);
+                      return `${isSY ? "**" + clean + "**" : clean}${a.endsWith("*") ? "*" : ""}${ai < pub.data.authors.length - 1 ? ", " : ""}`;
+                    }).join("")}
+                  </span>
+                  <br/>
+                  <span class="text-[var(--accent)] text-xs">{pub.data.venue} ({pub.data.year})</span>
+                  {pub.data.status !== "published" && (
+                    <span class="text-xs text-amber-400 ml-2">· {pub.data.status === "under_review" ? "Under Review" : "Preprint"}</span>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+      </div>
+
+      <div class="space-y-10">
+        <!-- Skills -->
+        <section class="reveal">
+          <SectionHeading title={t("cv.skills", locale)} />
+          <div class="space-y-4 text-sm">
+            <div>
+              <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2">Languages</p>
+              <div class="flex flex-wrap gap-1.5">
+                {["Python", "C++"].map((s) => (
+                  <span class="px-2.5 py-1 rounded-md bg-[var(--surface)] border border-[var(--border)] text-[var(--text-muted)]">{s}</span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2">ML / DL</p>
+              <div class="flex flex-wrap gap-1.5">
+                {["PyTorch", "JAX", "Flax"].map((s) => (
+                  <span class="px-2.5 py-1 rounded-md bg-[var(--surface)] border border-[var(--border)] text-[var(--text-muted)]">{s}</span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2">Tools</p>
+              <div class="flex flex-wrap gap-1.5">
+                {["Unity", "Git", "Docker"].map((s) => (
+                  <span class="px-2.5 py-1 rounded-md bg-[var(--surface)] border border-[var(--border)] text-[var(--text-muted)]">{s}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Awards -->
+        <section class="reveal">
+          <SectionHeading title={t("cv.awards", locale)} />
+          <div class="space-y-4 text-sm">
+            <div>
+              <p class="font-medium text-[var(--text)]">NRF Research Grant (PI)</p>
+              <p class="text-[var(--text-muted)]">₩12M · 2024</p>
+              <p class="text-xs text-[var(--text-muted)]">Master's student research promotion</p>
+            </div>
+            <div>
+              <p class="font-medium text-[var(--text)]">Dongguk Excellence Scholarship</p>
+              <p class="text-[var(--text-muted)]">2022</p>
+            </div>
+            <div>
+              <p class="font-medium text-[var(--text)]">Information Processing Industrial Engineer</p>
+              <p class="text-[var(--text-muted)]">국가기술자격 · 2020.08</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

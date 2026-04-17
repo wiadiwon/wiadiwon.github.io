@@ -1,0 +1,52 @@
+{
+  "nav.publications": "Publications",
+  "nav.projects": "Projects",
+  "nav.cv": "CV",
+
+  "hero.title": "AI Engineer",
+  "hero.subtitle": "Researcher at the intersection of reinforcement learning, multimodal representation, and human-AI interaction.",
+  "hero.cta.publications": "View Publications",
+  "hero.cta.cv": "Download CV",
+
+  "section.publications": "Publications",
+  "section.projects": "Projects",
+  "section.featured_publications": "Selected Publications",
+  "section.featured_projects": "Selected Projects",
+  "section.news": "News",
+
+  "publication.under_review": "Under Review",
+  "publication.published": "Published",
+  "publication.preprint": "Preprint",
+  "publication.co_first": "* Equal contribution",
+  "publication.pdf": "PDF",
+  "publication.code": "Code",
+  "publication.doi": "DOI",
+  "publication.bibtex": "BibTeX",
+  "publication.abstract": "Abstract",
+  "publication.keywords": "Keywords",
+  "publication.filter.label": "Filter by keyword",
+  "publication.filter.clear": "Clear all",
+  "publication.filter.empty": "No matching publications.",
+
+  "project.category.funded": "Funded",
+  "project.category.academic": "Academic",
+  "project.category.industry": "Industry",
+  "project.role": "Role",
+  "project.period": "Period",
+  "project.team": "Team",
+  "project.related": "Related Publications",
+  "project.view_all": "View All Projects",
+
+  "cv.download_en": "Download CV (English)",
+  "cv.download_ko": "Download CV (Korean)",
+  "cv.education": "Education",
+  "cv.experience": "Research Experience",
+  "cv.publications": "Publications",
+  "cv.skills": "Technical Skills",
+  "cv.awards": "Awards & Honors",
+
+  "footer.built_with": "Built with Astro",
+  "lang.toggle": "한국어",
+  "theme.toggle.dark": "Dark",
+  "theme.toggle.light": "Light"
+}

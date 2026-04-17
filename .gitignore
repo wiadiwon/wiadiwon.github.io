@@ -1,0 +1,25 @@
+# Build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local assets (dev-only reference folder, not needed by site runtime)
+_assets/
+
+# Claude Code & OMC (local tooling, not for repo)
+.claude/
+.omc/
