@@ -7,7 +7,7 @@ authors:
   - "Seo-Young Lee"
   - "Kyung-Joong Kim"
 year: 2025
-date: "2025-08-08"
+date: "2026-03-18"
 venue: "IEEE Conference on Games (CoG 2026)"
 status: under_review
 featured: false
