@@ -6,7 +6,7 @@ import { t } from "@/i18n/utils";
 
 const locale = "ko";
 const pubs = await getCollection("publicationsKo");
-const sorted = pubs.sort((a, b) => b.data.year - a.data.year);
+const sorted = pubs.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 ---
 
 <BaseLayout title="이력서" locale={locale} currentPath="/ko/cv">
@@ -20,10 +20,10 @@ const sorted = pubs.sort((a, b) => b.data.year - a.data.year);
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
           {t("cv.download_en", locale)}
         </a>
-        <a href="/cv/CV_SeoyoungLee.pdf" download class="px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--text)] text-sm font-medium hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors flex items-center gap-2">
+        <span class="px-4 py-2 rounded-lg border border-[var(--border)] text-sm font-medium flex items-center gap-2 opacity-40 cursor-not-allowed select-none" title="한국어 CV 준비 중">
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
           {t("cv.download_ko", locale)}
-        </a>
+        </span>
       </div>
     </div>
 
@@ -55,7 +55,20 @@ const sorted = pubs.sort((a, b) => b.data.year - a.data.year);
                 <span class="text-[var(--text-muted)] shrink-0 w-5 text-right">[{sorted.length - i}]</span>
                 <div>
                   <span class="font-medium text-[var(--text)]">{pub.data.title}</span><br/>
-                  <span class="text-[var(--text-muted)]">{pub.data.authors.join(", ")}</span><br/>
+                  <span class="text-[var(--text-muted)]">
+                    {pub.data.authors.map((author, ai) => {
+                      const hasAsterisk = author.endsWith("*");
+                      const name = author.replace(/\*/g, "");
+                      const isSY = ["Seo-Young Lee", "Seoyoung Lee"].some(v => name === v);
+                      return (
+                        <>
+                          {isSY ? <strong class="font-semibold text-[var(--text)]">{name}</strong> : name}
+                          {hasAsterisk && <sup class="text-[var(--accent)]">*</sup>}
+                          {ai < pub.data.authors.length - 1 && ", "}
+                        </>
+                      );
+                    })}
+                  </span><br/>
                   <span class="text-[var(--accent)] text-xs">{pub.data.venue} ({pub.data.year})</span>
                   {pub.data.status !== "published" && <span class="text-xs text-amber-400 ml-2">· {pub.data.status === "under_review" ? "심사 중" : "프리프린트"}</span>}
                 </div>

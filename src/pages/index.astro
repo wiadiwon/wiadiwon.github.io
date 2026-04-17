@@ -10,8 +10,8 @@ const locale = "en";
 const pubs = await getCollection("publicationsEn", (e) => e.data.featured);
 const projects = await getCollection("projectsEn", (e) => e.data.featured);
 
-const sortedPubs = pubs.sort((a, b) => b.data.year - a.data.year);
-const sortedProjects = projects.sort((a, b) => (b.data.featured ? 1 : -1));
+const sortedPubs = pubs.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
 
 const news = [
   { date: "2025.08", text: "Preprint SCOTTI (arXiv) released — tactile multi-task learning with progress prediction." },
@@ -88,6 +88,60 @@ const news = [
         </li>
       ))}
     </ul>
+  </section>
+
+  <!-- Education -->
+  <section class="max-w-5xl mx-auto px-6 md:px-8 pb-16">
+    <SectionHeading title="Education" />
+    <div class="space-y-4">
+      <div class="flex gap-5 items-start reveal reveal-delay-1">
+        <div class="shrink-0 w-20 text-right pt-0.5">
+          <span class="text-xs text-[var(--text-muted)] font-mono">2023–2025</span>
+        </div>
+        <div class="border-l-2 border-[var(--accent)] pl-4">
+          <p class="font-semibold text-[var(--text)]">M.S. Artificial Intelligence</p>
+          <p class="text-sm text-[var(--accent)]">GIST (Gwangju Institute of Science and Technology)</p>
+          <p class="text-xs text-[var(--text-muted)] mt-0.5">GPA 4.20 / 4.50 · Advisor: Prof. Kyung-Joong Kim</p>
+        </div>
+      </div>
+      <div class="flex gap-5 items-start reveal reveal-delay-2">
+        <div class="shrink-0 w-20 text-right pt-0.5">
+          <span class="text-xs text-[var(--text-muted)] font-mono">2017–2023</span>
+        </div>
+        <div class="border-l-2 border-[var(--border)] pl-4">
+          <p class="font-semibold text-[var(--text)]">B.S. Computer Science & Engineering</p>
+          <p class="text-sm text-[var(--text-muted)]">Dongguk University</p>
+          <p class="text-xs text-[var(--text-muted)] mt-0.5">GPA 3.96 / 4.50</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Experience -->
+  <section class="max-w-5xl mx-auto px-6 md:px-8 pb-16">
+    <SectionHeading title="Research Experience" />
+    <div class="space-y-4">
+      <div class="flex gap-5 items-start reveal reveal-delay-1">
+        <div class="shrink-0 w-20 text-right pt-0.5">
+          <span class="text-xs text-[var(--text-muted)] font-mono">2023–2025</span>
+        </div>
+        <div class="border-l-2 border-[var(--accent)] pl-4">
+          <p class="font-semibold text-[var(--text)]">Graduate Researcher</p>
+          <p class="text-sm text-[var(--accent)]">GIST Game AI Lab · Gwangju, Korea</p>
+          <p class="text-xs text-[var(--text-muted)] mt-1">RL-based procedural content generation, multimodal representation learning, human-AI alignment, tactile-based pose estimation (GIST–MIT collaboration).</p>
+        </div>
+      </div>
+      <div class="flex gap-5 items-start reveal reveal-delay-2">
+        <div class="shrink-0 w-20 text-right pt-0.5">
+          <span class="text-xs text-[var(--text-muted)] font-mono">2022</span>
+        </div>
+        <div class="border-l-2 border-[var(--border)] pl-4">
+          <p class="font-semibold text-[var(--text)]">Research Intern — AI R&D</p>
+          <p class="text-sm text-[var(--text-muted)]">Samsung C-Lab · Seoul, Korea</p>
+          <p class="text-xs text-[var(--text-muted)] mt-1">Art activity recognition and painting-region detection; Android application deployment.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Featured Publications -->
