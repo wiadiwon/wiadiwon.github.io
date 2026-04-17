@@ -4,7 +4,7 @@
   "nav.cv": "CV",
 
   "hero.title": "AI Engineer",
-  "hero.subtitle": "I am an AI engineer who works across both research and implementation. During my M.S. at GIST, I researched reinforcement learning and multimodal representation learning — developing agents that interact naturally with humans, from natural language-guided procedural content generation and human-AI coordination to 3D pose estimation from tactile signals. I am drawn to problems at the intersection of perception, language, and decision-making, and have applied this across diverse domains using PyTorch, JAX, and Unity.",
+  "hero.subtitle": "I am an <strong>AI engineer who works across both research and implementation</strong>. During my M.S. at GIST, I researched <strong>reinforcement learning and multimodal representation learning</strong> — developing <strong>agents that interact naturally with humans</strong>, from natural language-guided procedural content generation and human-AI coordination to 3D pose estimation from tactile signals. I am drawn to problems at the intersection of <strong>perception, language, and decision-making</strong>, and have applied this across diverse domains using <strong>PyTorch and JAX</strong>.",
   "hero.cta.publications": "View Publications",
   "hero.cta.cv": "Download CV",
 

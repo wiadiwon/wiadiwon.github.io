@@ -46,9 +46,7 @@ const news = [
           Seo-Young Lee
           <span class="block text-[var(--accent)]">이서영</span>
         </h1>
-        <p class="text-lg text-[var(--text-muted)] leading-relaxed mb-8 max-w-xl animate-fade-in-up" style="animation-delay:0.1s">
-          {t("hero.subtitle", locale)}
-        </p>
+        <p class="text-lg text-[var(--text-muted)] leading-relaxed mb-8 max-w-xl animate-fade-in-up" style="animation-delay:0.1s" set:html={t("hero.subtitle", locale)} />
         <div class="flex flex-wrap gap-3 animate-fade-in-up" style="animation-delay:0.2s">
           <a href="/publications"
             class="px-5 py-2.5 rounded-lg bg-[var(--accent)] text-white font-medium text-sm hover:bg-[var(--accent-hover)] transition-colors">
