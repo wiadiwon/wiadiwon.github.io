@@ -4,7 +4,7 @@
   "nav.cv": "CV",
 
   "hero.title": "AI Engineer",
-  "hero.subtitle": "Researcher at the intersection of reinforcement learning, multimodal representation, and human-AI interaction.",
+  "hero.subtitle": "I am an AI engineer who works across both research and implementation. During my M.S. at GIST, I researched reinforcement learning and multimodal representation learning — developing agents that interact naturally with humans, from natural language-guided procedural content generation and human-AI coordination to 3D pose estimation from tactile signals. I am drawn to problems at the intersection of perception, language, and decision-making, and have applied this across diverse domains using PyTorch, JAX, and Unity.",
   "hero.cta.publications": "View Publications",
   "hero.cta.cv": "Download CV",
 
