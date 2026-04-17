@@ -9,6 +9,7 @@ authors:
   - "Jeffrey DelPreto"
   - "Kyung-Joong Kim"
 year: 2025
+date: "2026-03-26"
 venue: "arXiv"
 status: preprint
 featured: false

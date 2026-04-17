@@ -7,7 +7,7 @@ import { t } from "@/i18n/utils";
 
 const locale = "en";
 const allProjects = await getCollection("projectsEn");
-const sorted = allProjects.sort((a, b) => (b.data.featured ? 1 : -1) - (a.data.featured ? 1 : -1));
+const sorted = allProjects.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout

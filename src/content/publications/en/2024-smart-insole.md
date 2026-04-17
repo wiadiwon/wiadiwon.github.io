@@ -8,6 +8,7 @@ authors:
   - "Yiyue Luo"
   - "Kyung-Joong Kim"
 year: 2024
+date: "2024-10-26"
 venue: "NeurIPS Workshop on Touch Processing: From Data to Knowledge (2024)"
 status: published
 featured: true

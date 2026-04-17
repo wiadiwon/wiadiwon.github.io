@@ -7,9 +7,11 @@ import { t } from "@/i18n/utils";
 
 const locale = "en";
 const allPubs = await getCollection("publicationsEn");
-const sorted = allPubs.sort((a, b) => b.data.year - a.data.year || (a.data.status === "published" ? -1 : 1));
+const sorted = allPubs.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 
-const allKeywords = [...new Set(sorted.flatMap((p) => p.data.keywords))].sort();
+const kwCount = new Map<string, number>();
+sorted.forEach(p => p.data.keywords.forEach(k => kwCount.set(k, (kwCount.get(k) ?? 0) + 1)));
+const allKeywords = [...kwCount.entries()].sort((a, b) => b[1] - a[1]).map(([k]) => k);
 ---
 
 <BaseLayout

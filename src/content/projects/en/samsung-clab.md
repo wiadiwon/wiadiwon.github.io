@@ -10,7 +10,8 @@ keywords:
   - "object detection"
   - "mobile AI"
   - "android"
-featured: false
+featured: true
+order: 4
 heroGradient: "from-blue-900 via-sky-900 to-slate-900"
 hasDetail: false
 lang: en

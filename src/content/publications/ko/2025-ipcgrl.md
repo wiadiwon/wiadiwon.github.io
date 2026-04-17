@@ -7,9 +7,10 @@ authors:
   - "Dong-Hyeon Kim"
   - "Kyung-Joong Kim"
 year: 2025
+date: "2025-08-19"
 venue: "IEEE Conference on Games (CoG 2025)"
 status: published
-featured: false
+featured: true
 keywords:
   - "절차적 콘텐츠 생성"
   - "강화학습"
