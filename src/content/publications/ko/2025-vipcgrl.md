@@ -7,7 +7,7 @@ authors:
   - "Geumhwan Hwang"
   - "Kyung-Joong Kim"
 year: 2025
-date: "2025-08-13"
+date: "2025-12-29"
 venue: "IEEE Transactions on Games (ToG)"
 status: under_review
 featured: true
