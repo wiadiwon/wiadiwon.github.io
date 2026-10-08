@@ -3,7 +3,7 @@ import { t } from "@/i18n/utils";
 
 interface Props {
   title: string;
-  category: "funded" | "academic" | "industry";
+  category: "funded" | "academic" | "industry" | "independent";
   role: string;
   period: string;
   teamSize?: number;
@@ -23,6 +23,7 @@ const {
 const base = locale === "ko" ? "/ko" : "";
 
 const categoryColor: Record<string, string> = {
+  independent: "bg-violet-500/15 text-violet-400 border-violet-500/30",
   funded: "bg-indigo-500/15 text-indigo-400 border-indigo-500/30",
   academic: "bg-sky-500/15 text-sky-400 border-sky-500/30",
   industry: "bg-orange-500/15 text-orange-400 border-orange-500/30",
@@ -47,7 +48,7 @@ const categoryColor: Record<string, string> = {
 
     <!-- Meta -->
     <p class="text-xs text-[var(--text-muted)] mb-3">
-      {role} · {period}{teamSize ? ` · Team of ${teamSize}` : ""}
+      {role} · {period}{teamSize ? ` · ${locale === "ko" ? `${teamSize}인 팀` : `Team of ${teamSize}`}` : ""}
     </p>
 
     <!-- Summary -->

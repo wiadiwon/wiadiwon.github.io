@@ -10,12 +10,14 @@ const locale = "ko";
 const pubs = await getCollection("publicationsKo", (e) => e.data.featured);
 const projects = await getCollection("projectsKo", (e) => e.data.featured);
 
-const sortedPubs = pubs.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const sortedPubs = pubs.sort((a, b) => b.data.year - a.data.year || (b.data.date ?? "").localeCompare(a.data.date ?? ""));
 const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
 
 const news = [
+  { date: "2026.09", text: "MIPCGRL, IEEE CoG 2026 채택 및 최우수논문상 후보 선정 (학회 개최 월 기준)." },
+  { date: "2026.08", text: "NHN Game × AI Hackathon 예선 출품을 위한 Unity 하이브리드 덱빌딩 액션 로그라이크 Arcana Trigger 개발." },
+  { date: "2026.07", text: "VIPCGRL, IEEE Transactions on Games 게재." },
   { date: "2026.03", text: "SCOTTI arXiv 프리프린트 공개 — 촉각 신호 기반 자세 추정·행동 인식·진행도 예측 공유 표현 학습." },
-  { date: "2025.12", text: "VIPCGRL, IEEE Transactions on Games 심사 제출 (심사 중)." },
   { date: "2025.09", text: "GIST 인지지능연구실 연구조교(Graduate Research Assistant) 합류." },
   { date: "2025.08", text: "IPCGRL: Language-Instructed RL for Procedural Level Generation, IEEE Conference on Games (CoG) 2025 게재." },
   { date: "2025.08", text: "Automatic Curriculum Design for Zero-Shot Human-AI Coordination, IEEE Access 게재." },
@@ -80,7 +82,7 @@ const news = [
     <SectionHeading title={t("section.news", locale)} />
     <ul class="space-y-3">
       {news.map((item, i) => (
-        <li class={`flex gap-4 items-start text-sm reveal reveal-delay-${i + 1}`}>
+        <li class={`flex gap-4 items-start text-sm reveal reveal-delay-${Math.min(i + 1, 8)}`}>
           <span class="text-[var(--accent)] font-mono text-xs mt-0.5 shrink-0 w-16">{item.date}</span>
           <span class="text-[var(--text-muted)]">{item.text}</span>
         </li>
@@ -177,7 +179,7 @@ const news = [
     <div class="grid gap-4">
       {sortedPubs.map((pub, i) => (
         <div class={`reveal reveal-delay-${i + 1}`}>
-          <PublicationCard title={pub.data.title} authors={pub.data.authors} year={pub.data.year} venue={pub.data.venue} status={pub.data.status} keywords={pub.data.keywords} abstract={pub.data.abstract} pdf={pub.data.pdf} code={pub.data.code} doi={pub.data.doi} locale={locale} />
+          <PublicationCard title={pub.data.title} authors={pub.data.authors} year={pub.data.year} venue={pub.data.venue} status={pub.data.status} keywords={pub.data.keywords} abstract={pub.data.abstract} pdf={pub.data.pdf} code={pub.data.code} doi={pub.data.doi} arxiv={pub.data.arxiv} conference={pub.data.conference} bestPaperNominee={pub.data.bestPaperNominee} locale={locale} />
         </div>
       ))}
     </div>

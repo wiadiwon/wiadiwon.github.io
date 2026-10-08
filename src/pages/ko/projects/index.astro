@@ -12,7 +12,7 @@ const sorted = allProjects.sort((a, b) => a.data.order - b.data.order);
 
 <BaseLayout title="프로젝트" locale={locale} currentPath="/ko/projects">
   <div class="max-w-5xl mx-auto px-6 md:px-8 py-16">
-    <SectionHeading title={t("section.projects", locale)} subtitle="지원 연구, 학술 연구, 산학 협력 프로젝트." />
+    <SectionHeading title={t("section.projects", locale)} subtitle="지원 연구, 학술 연구, 산학 협력과 개인·팀 게임 개발 프로젝트." />
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
       {sorted.map((proj, i) => (
         <div class={`reveal reveal-delay-${Math.min(i + 1, 4)}`}>

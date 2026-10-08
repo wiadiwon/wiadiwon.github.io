@@ -14,6 +14,9 @@
   "section.featured_projects": "Selected Projects",
   "section.news": "News",
 
+  "publication.accepted": "Accepted",
+  "publication.best_paper_nominee": "Best Paper Award Nominee",
+  "publication.conference": "Conference",
   "publication.under_review": "Under Review",
   "publication.published": "Published",
   "publication.preprint": "Preprint",
@@ -30,6 +33,7 @@
 
   "project.category.funded": "Funded",
   "project.category.academic": "Academic",
+  "project.category.independent": "Independent Game Development",
   "project.category.industry": "Industry",
   "project.role": "Role",
   "project.period": "Period",

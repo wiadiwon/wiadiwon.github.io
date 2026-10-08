@@ -1,0 +1,47 @@
+---
+title: "Arcana Trigger: Hybrid Deck-Building Action Roguelike"
+category: independent
+role: "Core, Card Combat & Integration Developer"
+period: "2026.07 – 2026.08"
+teamSize: 2
+summary: "Unity 6/C# game prototype combining turn-based card combat and real-time shooting through shared battle state, developed for the NHN Game × AI Hackathon preliminary submission."
+keywords:
+  - "Unity"
+  - "C#"
+  - "game development"
+  - "procedural generation"
+  - "deck-building"
+featured: true
+order: 4
+heroGradient: "from-purple-900 via-indigo-900 to-slate-900"
+hasDetail: true
+slug: "arcana-trigger"
+---
+
+## Motivation
+
+Arcana Trigger combines turn-based deck-building with real-time top-down shooting. A player can switch to action combat when a difficult hand limits their options, or use card strategy when dodging and aiming are challenging. Both modes share health and status effects so that switching changes how the player fights while preserving the same battle.
+
+Developed by a two-person team for the **NHN Game × AI Hackathon 2026 preliminary submission**, this project broadened my experience from game AI research to implementing a playable game's rules, interfaces and progression.
+
+[Play the Web Demo](https://calendar3450.github.io/NHNAIGameProject/) · [Source Code](https://github.com/calendar3450/NHNAIGameProject)
+
+## My Contribution
+
+- **Core and card combat:** deck, hand, discard, energy and turn resolution; shared battle state and card/action session transitions.
+- **Cross-mode rules:** weapon-dependent attack cards, shared burn and slow effects, enemy intentions and boss card patterns.
+- **Procedural dungeons:** seed-based room and corridor generation, connectivity validation, obstacles, exploration visibility and integration with the game scene.
+- **Progression and presentation:** card rewards and removal, combat HUD, floor transitions, endless-run scoring and game-over results.
+- **Integration and verification:** documented rules and interfaces, scene integration, and focused Unity EditMode/PlayMode regression checks.
+
+My teammate primarily handled movement, aiming, shooting, enemy action behavior and bullet patterns. We coordinated around shared rules and game-scene integration.
+
+## Engineering Approach
+
+The central challenge was preserving one battle state across two different time models: turn-based cards and real-time action. Explicit session lifecycles and state-transition rules kept health, effects and rewards consistent across mode changes. Seed-based dungeon generation and connectivity checks made layouts reproducible for debugging.
+
+The project used Unity 6 and C#, with a desktop-browser WebGL demo. Development records include focused runtime, content, UI and scene checks. Those records cover individual features and integration paths; they do not establish that every final build and browser path passed. Some records retain font/content test failures and pending manual or Web validation.
+
+## Outcome & Lessons
+
+The team submitted the prototype but **did not advance beyond the preliminary round**. The experience lies in taking a game concept through concrete mechanics, UI, procedural content and team integration. It also highlighted the need to keep feature implementation, automated checks, playtesting and final browser validation as distinct milestones.

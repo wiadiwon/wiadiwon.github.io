@@ -11,7 +11,7 @@ keywords:
   - "모바일 AI"
   - "안드로이드"
 featured: true
-order: 4
+order: 5
 heroGradient: "from-blue-900 via-sky-900 to-slate-900"
 hasDetail: false
 lang: ko

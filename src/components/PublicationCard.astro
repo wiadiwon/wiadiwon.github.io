@@ -6,10 +6,13 @@ interface Props {
   authors: string[];
   year: number;
   venue: string;
-  status: "published" | "under_review" | "preprint";
+  status: "published" | "accepted" | "under_review" | "preprint";
+  bestPaperNominee?: boolean;
   keywords: string[];
   abstract?: string;
   pdf?: string;
+  arxiv?: string;
+  conference?: string;
   code?: string;
   doi?: string;
   locale?: string;
@@ -18,11 +21,12 @@ interface Props {
 
 const {
   title, authors, year, venue, status, keywords,
-  abstract, pdf, code, doi, locale = "en", compact = false,
+  abstract, pdf, arxiv, conference, code, doi, bestPaperNominee = false, locale = "en", compact = false,
 } = Astro.props;
 
 const statusColor: Record<string, string> = {
   published: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
+  accepted: "bg-sky-500/15 text-sky-400 border-sky-500/30",
   under_review: "bg-amber-500/15 text-amber-400 border-amber-500/30",
   preprint: "bg-violet-500/15 text-violet-400 border-violet-500/30",
 };
@@ -37,6 +41,7 @@ const statusColor: Record<string, string> = {
     <span class="text-xs text-[var(--text-muted)]">{year}</span>
     <span class="text-xs text-[var(--text-muted)]">·</span>
     <span class="text-xs text-[var(--text-muted)] italic">{venue}</span>
+    {bestPaperNominee && <span class="text-xs px-2 py-0.5 rounded-full border border-amber-500/30 text-amber-500">{t("publication.best_paper_nominee", locale)}</span>}
   </div>
 
   <!-- Title -->
@@ -80,6 +85,8 @@ const statusColor: Record<string, string> = {
 
   <!-- Links -->
   <div class="flex gap-3 flex-wrap">
+    {arxiv && <a href={arxiv} target="_blank" rel="noopener noreferrer" class="text-xs font-medium text-[var(--accent)] hover:underline">arXiv</a>}
+    {conference && <a href={conference} target="_blank" rel="noopener noreferrer" class="text-xs font-medium text-[var(--accent)] hover:underline">{t("publication.conference", locale)}</a>}
     {pdf && (
       <a href={pdf} target="_blank" rel="noopener noreferrer"
         class="text-xs font-medium text-[var(--accent)] hover:underline flex items-center gap-1">

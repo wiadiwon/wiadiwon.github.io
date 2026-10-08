@@ -10,12 +10,14 @@ const locale = "en";
 const pubs = await getCollection("publicationsEn", (e) => e.data.featured);
 const projects = await getCollection("projectsEn", (e) => e.data.featured);
 
-const sortedPubs = pubs.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const sortedPubs = pubs.sort((a, b) => b.data.year - a.data.year || (b.data.date ?? "").localeCompare(a.data.date ?? ""));
 const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
 
 const news = [
+  { date: "2026.09", text: "MIPCGRL accepted to IEEE CoG 2026 and nominated for the Best Paper Award (conference month)." },
+  { date: "2026.08", text: "Developed Arcana Trigger, a Unity hybrid deck-building action roguelike, for the NHN Game × AI Hackathon preliminary submission." },
+  { date: "2026.07", text: "VIPCGRL published in IEEE Transactions on Games." },
   { date: "2026.03", text: "SCOTTI arXiv preprint released — shared tactile representation for 3D pose estimation, action classification, and progress prediction." },
-  { date: "2025.12", text: "VIPCGRL submitted to IEEE Transactions on Games (under review)." },
   { date: "2025.09", text: "Joined Cognition and Intelligence Lab, GIST as Graduate Research Assistant." },
   { date: "2025.08", text: "IPCGRL: Language-Instructed RL for Procedural Level Generation published at IEEE Conference on Games (CoG) 2025." },
   { date: "2025.08", text: "Automatic Curriculum Design for Zero-Shot Human-AI Coordination published in IEEE Access." },
@@ -96,7 +98,7 @@ const news = [
     <SectionHeading title={t("section.news", locale)} />
     <ul class="space-y-3">
       {news.map((item, i) => (
-        <li class={`flex gap-4 items-start text-sm reveal reveal-delay-${i + 1}`}>
+        <li class={`flex gap-4 items-start text-sm reveal reveal-delay-${Math.min(i + 1, 8)}`}>
           <span class="text-[var(--accent)] font-mono text-xs mt-0.5 shrink-0 w-16">{item.date}</span>
           <span class="text-[var(--text-muted)]">{item.text}</span>
         </li>
@@ -204,7 +206,7 @@ const news = [
             abstract={pub.data.abstract}
             pdf={pub.data.pdf}
             code={pub.data.code}
-            doi={pub.data.doi}
+            doi={pub.data.doi} arxiv={pub.data.arxiv} conference={pub.data.conference} bestPaperNominee={pub.data.bestPaperNominee}
             locale={locale}
           />
         </div>

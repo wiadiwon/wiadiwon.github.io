@@ -58,7 +58,7 @@ const base = locale === "ko" ? "/ko" : "";
           {teamSize && (
             <div>
               <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-1">{t("project.team", locale)}</p>
-              <p class="font-medium">{teamSize} members</p>
+              <p class="font-medium">{teamSize}{locale === "ko" ? "명" : " members"}</p>
             </div>
           )}
           <div>

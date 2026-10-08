@@ -6,7 +6,7 @@ import { t } from "@/i18n/utils";
 
 const locale = "ko";
 const pubs = await getCollection("publicationsKo");
-const sorted = pubs.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const sorted = pubs.sort((a, b) => b.data.year - a.data.year || (b.data.date ?? "").localeCompare(a.data.date ?? ""));
 ---
 
 <BaseLayout title="이력서" locale={locale} currentPath="/ko/cv">
@@ -29,6 +29,13 @@ const sorted = pubs.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.
 
     <div class="grid md:grid-cols-[2fr_1fr] gap-12">
       <div class="space-y-12">
+        <section class="reveal">
+          <SectionHeading title="게임 개발 경험" />
+          <p class="font-semibold"><a href="/ko/projects/arcana-trigger" class="text-[var(--accent)] hover:underline">Arcana Trigger</a></p>
+          <p class="text-sm text-[var(--text-muted)]">코어·카드 전투·통합 개발 · 2인 팀 · 2026.07–08</p>
+          <p class="text-sm text-[var(--text-muted)] mt-2">NHN Game × AI Hackathon 예선 출품을 위해 Unity 6/C# 하이브리드 덱빌딩 액션 로그라이크를 개발했습니다. 카드 전투, 공유 상태와 모드 전환, 절차적 던전, 보상과 런 점수 시스템을 구현했습니다. 예선을 통과하지 못했으며, 실제 게임 구현과 통합 경험에 초점을 둡니다.</p>
+        </section>
+
         <section class="reveal">
           <SectionHeading title={t("cv.education", locale)} />
           <div class="space-y-6">
@@ -70,7 +77,14 @@ const sorted = pubs.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.
                     })}
                   </span><br/>
                   <span class="text-[var(--accent)] text-xs">{pub.data.venue} ({pub.data.year})</span>
-                  {pub.data.status !== "published" && <span class="text-xs text-amber-400 ml-2">· {pub.data.status === "under_review" ? "심사 중" : "프리프린트"}</span>}
+                  <span class="text-xs text-[var(--text-muted)] ml-2">· {t(`publication.${pub.data.status}`, locale)}</span>
+                  {pub.data.bestPaperNominee && <p class="text-xs text-[var(--accent)] mt-1">{t("publication.best_paper_nominee", locale)}</p>}
+                  <div class="flex gap-3 text-xs mt-1">
+                    {pub.data.arxiv && <a href={pub.data.arxiv} target="_blank" rel="noopener noreferrer" class="text-[var(--accent)] hover:underline">arXiv</a>}
+                    {pub.data.conference && <a href={pub.data.conference} target="_blank" rel="noopener noreferrer" class="text-[var(--accent)] hover:underline">{t("publication.conference", locale)}</a>}
+                    {pub.data.doi && <a href={pub.data.doi.startsWith("http") ? pub.data.doi : `https://doi.org/${pub.data.doi}`} target="_blank" rel="noopener noreferrer" class="text-[var(--accent)] hover:underline">DOI</a>}
+                    {pub.data.code && <a href={pub.data.code} target="_blank" rel="noopener noreferrer" class="text-[var(--accent)] hover:underline">{t("publication.code", locale)}</a>}
+                  </div>
                 </div>
               </li>
             ))}
@@ -84,7 +98,7 @@ const sorted = pubs.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.
           <div class="space-y-4 text-sm">
             <div>
               <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2">프로그래밍 언어</p>
-              <div class="flex flex-wrap gap-1.5">{["Python", "C++"].map((s) => (<span class="px-2.5 py-1 rounded-md bg-[var(--surface)] border border-[var(--border)] text-[var(--text-muted)]">{s}</span>))}</div>
+              <div class="flex flex-wrap gap-1.5">{["Python", "C++", "C#"].map((s) => (<span class="px-2.5 py-1 rounded-md bg-[var(--surface)] border border-[var(--border)] text-[var(--text-muted)]">{s}</span>))}</div>
             </div>
             <div>
               <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2">ML / DL</p>

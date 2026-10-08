@@ -6,7 +6,7 @@ import { t } from "@/i18n/utils";
 
 const locale = "en";
 const pubs = await getCollection("publicationsEn");
-const sorted = pubs.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const sorted = pubs.sort((a, b) => b.data.year - a.data.year || (b.data.date ?? "").localeCompare(a.data.date ?? ""));
 ---
 
 <BaseLayout
@@ -42,6 +42,13 @@ const sorted = pubs.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.
 
     <div class="grid md:grid-cols-[2fr_1fr] gap-12">
       <div class="space-y-12">
+        <section class="reveal">
+          <SectionHeading title="Game Development" />
+          <p class="font-semibold"><a href="/projects/arcana-trigger" class="text-[var(--accent)] hover:underline">Arcana Trigger</a></p>
+          <p class="text-sm text-[var(--text-muted)]">Core, card combat and integration developer · 2-person team · Jul–Aug 2026</p>
+          <p class="text-sm text-[var(--text-muted)] mt-2">Developed a Unity 6/C# hybrid deck-building action roguelike for the NHN Game × AI Hackathon preliminary submission. Implemented card combat, shared state and mode transitions, procedural dungeons, rewards and run scoring. The team did not advance beyond the preliminary round.</p>
+        </section>
+
         <!-- Education -->
         <section class="reveal">
           <SectionHeading title={t("cv.education", locale)} />
@@ -87,9 +94,14 @@ const sorted = pubs.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.
                   </span>
                   <br/>
                   <span class="text-[var(--accent)] text-xs">{pub.data.venue} ({pub.data.year})</span>
-                  {pub.data.status !== "published" && (
-                    <span class="text-xs text-amber-400 ml-2">· {pub.data.status === "under_review" ? "Under Review" : "Preprint"}</span>
-                  )}
+                  <span class="text-xs text-[var(--text-muted)] ml-2">· {t(`publication.${pub.data.status}`, locale)}</span>
+                  {pub.data.bestPaperNominee && <p class="text-xs text-[var(--accent)] mt-1">{t("publication.best_paper_nominee", locale)}</p>}
+                  <div class="flex gap-3 text-xs mt-1">
+                    {pub.data.arxiv && <a href={pub.data.arxiv} target="_blank" rel="noopener noreferrer" class="text-[var(--accent)] hover:underline">arXiv</a>}
+                    {pub.data.conference && <a href={pub.data.conference} target="_blank" rel="noopener noreferrer" class="text-[var(--accent)] hover:underline">{t("publication.conference", locale)}</a>}
+                    {pub.data.doi && <a href={pub.data.doi.startsWith("http") ? pub.data.doi : `https://doi.org/${pub.data.doi}`} target="_blank" rel="noopener noreferrer" class="text-[var(--accent)] hover:underline">DOI</a>}
+                    {pub.data.code && <a href={pub.data.code} target="_blank" rel="noopener noreferrer" class="text-[var(--accent)] hover:underline">{t("publication.code", locale)}</a>}
+                  </div>
                 </div>
               </li>
             ))}
@@ -105,7 +117,7 @@ const sorted = pubs.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.
             <div>
               <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2">Languages</p>
               <div class="flex flex-wrap gap-1.5">
-                {["Python", "C++"].map((s) => (
+                {["Python", "C++", "C#"].map((s) => (
                   <span class="px-2.5 py-1 rounded-md bg-[var(--surface)] border border-[var(--border)] text-[var(--text-muted)]">{s}</span>
                 ))}
               </div>
