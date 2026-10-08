@@ -8,7 +8,7 @@ authors:
   - "Kyung-Joong Kim"
 year: 2026
 date: "2026-07-16"
-venue: "IEEE Transactions on Games"
+venue: "IEEE Transactions on Games (Early Access)"
 status: published
 featured: true
 keywords:

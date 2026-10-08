@@ -44,18 +44,22 @@ Game level design is a creative process where human designers express intent thr
 
 The sketch input pipeline uses edge detection + spline interpolation to convert levels to 224×224 grayscale sketches, enabling zero-shot cross-modal generalization at inference time.
 
-## Results & Contribution
+## My Contribution
 
-- **Best human-likeness** among all baselines (TPKL-Div and ViT metrics).
-- **Zero-shot cross-modal**: model trained on text input generalizes to level/sketch inputs at inference.
-- **First PCGRL system** to support sketch as a control modality.
-- **First quadruple contrastive loss** aligning three modalities + human/AI style jointly.
-- Human evaluation confirms practical improvement in perceived human-likeness.
+- Contributed to the main model design and architecture proposals.
+- Designed the loss function for multimodal representation learning.
+- Implemented the CLIP-based representation-learning model, dataset, sampler and training code.
+- Integrated the CLIP encoder into the reinforcement-learning training code and implemented precomputation of text embeddings for reuse during training.
 
-This work extends the M.S. thesis (HL-PCGRL, GIST 2025) with additional visual modalities and became the flagship research of the lab's PCGRL line.
+## Research Results
+
+- **Quantitative evaluation:** improved generated-level human-likeness metrics (TPKL-Div and ViT-Sim) compared with CPCGRL and IPCGRL.
+- **User evaluation:** in a study with 26 participants, generated levels received higher human-likeness ratings than CPCGRL and IPCGRL, and higher text-instruction alignment ratings than IPCGRL.
+- **Cross-modal inputs:** the reinforcement-learning policy trained with text instructions accepted level images and sketches without additional policy training. The shared encoder had been trained with level images and sketches during representation learning.
+- This research extends the M.S. thesis (HL-PCGRL, GIST 2025).
 
 ## Publication Updates
 
-VIPCGRL is published in **IEEE Transactions on Games (2026)**. [Publication DOI](https://doi.org/10.1109/TG.2026.3713793) · [arXiv](https://arxiv.org/abs/2508.09860) · [Code](https://github.com/bic4907/VIPCGRL).
+VIPCGRL is published in **IEEE Transactions on Games, Early Access (2026)**. [Publication DOI](https://doi.org/10.1109/TG.2026.3713793) · [arXiv](https://arxiv.org/abs/2508.09860) · [Code](https://github.com/bic4907/VIPCGRL).
 
 The related MIPCGRL paper was **accepted to IEEE CoG 2026** and selected as a **Best Paper Award Nominee**. It is listed as regular paper #217 and scheduled for a 20-minute presentation in Best of CoG on 2 September 2026. [Conference](https://cog2026.org/acceptedpapers) · [Schedule](https://cog2026.org/schedule) · [arXiv](https://arxiv.org/abs/2508.09193).

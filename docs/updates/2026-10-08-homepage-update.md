@@ -72,3 +72,25 @@ Crossref's official API returned only year precision for `published`/`published-
 - Both homepage news entries now show `2026.07`.
 - This is the Early Access publication date, not an issue-assignment date or the 2026-07-17 arXiv revision date.
 - Earlier notes describing the date as unconfirmed are historical; VIPCGRL's publication date is now confirmed. MIPCGRL's publication details remain unconfirmed.
+
+## Follow-up: Career OS confirmed corrections
+
+Source: `C:\Career\career-os-v0.1\docs\CV_PORTFOLIO_UPDATE_DIGEST.md` and its website correction memo. The owner explicitly authorized applying the confirmed differences to the public website in this chat, including the three participation-period corrections previously scoped to private applications.
+
+- Personal participation: ACD 2023.09–2024.02, Samsung C-Lab 2022.12–2023.03, Smart Insole 2023.10–2025.01, in both languages. These are not whole-project lifetimes.
+- Post-master's descriptive role: Researcher (Post-Master’s) / 석사후연구원, in homepage experience and the September 2025 news. No official employment-contract status is asserted.
+- VIPCGRL venue now explicitly states Early Access in collection metadata, homepage news and the project publication paragraph. Existing DOI/date and MIPCGRL Accepted/nominee status remain intact.
+- Smart Insole workshop name corrected to 2nd NeurIPS Workshop on Touch Processing: From Data to Knowledge, 2024.
+- Project contribution/results prose proposals are pending owner approval and were not applied. The downloadable PDF is unchanged. These follow-up edits are not yet committed or pushed.
+
+## Follow-up: approved project descriptions
+
+The owner approved proposals A–D and explicitly confirmed adding VIPCGRL loss-function design to personal contributions. This supersedes the earlier pending-approval note.
+
+- Applied matching Korean/English VIPCGRL personal contributions, including multimodal representation-learning loss-function design. No sole ownership, reward-design claim or quantified speedup was added.
+- Replaced broad VIPCGRL results/first claims with named baselines, 26-participant evaluation and policy-versus-encoder training scope.
+- Added ACD cross-play evaluation pipeline and curriculum difficulty-distribution analysis as personal contributions; research results retained separately.
+- Added Arcana Trigger Codex-assisted development, human review/validation process and team WebGL/GitHub Pages deployment; existing validation limitations and preliminary-round outcome retained.
+- These descriptions are owner-authorized for public use, including the previously private-application contribution statements. No Career OS source files or downloadable CV PDF were edited. No commit or push performed for this follow-up.
+
+Validation for approved descriptions: npm run build exited 0 (17 pages); 32 generated-content assertions passed across six Korean/English project detail pages; git diff --check exited 0. Browser visual inspection was not repeated for this prose-only follow-up.

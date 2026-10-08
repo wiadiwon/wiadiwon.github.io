@@ -40,7 +40,15 @@ My teammate primarily handled movement, aiming, shooting, enemy action behavior 
 
 The central challenge was preserving one battle state across two different time models: turn-based cards and real-time action. Explicit session lifecycles and state-transition rules kept health, effects and rewards consistent across mode changes. Seed-based dungeon generation and connectivity checks made layouts reproducible for debugging.
 
-The project used Unity 6 and C#, with a desktop-browser WebGL demo. Development records include focused runtime, content, UI and scene checks. Those records cover individual features and integration paths; they do not establish that every final build and browser path passed. Some records retain font/content test failures and pending manual or Web validation.
+## Development & Verification
+
+The two-person team used Unity 6 and C# and deployed a WebGL build to GitHub Pages to provide a web demo.
+
+During development, I used Codex Desktop for feature specifications, existing-code analysis, implementation planning, C# code and test authoring, development documentation and error analysis.
+
+The developer reviewed AI-proposed code and changes and decided whether to incorporate them through diff review, playtesting, Unity Console checks, EditMode/PlayMode tests and visual inspection.
+
+Development records include focused runtime, content, UI and scene checks. They do not establish that the final build and every browser path passed; some records retain font/content test failures and pending manual or Web validation.
 
 ## Outcome & Lessons
 

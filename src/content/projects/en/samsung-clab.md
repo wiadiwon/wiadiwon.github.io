@@ -2,7 +2,7 @@
 title: "Samsung C-Lab: Art Activity Recognition & Detection"
 category: industry
 role: "Research Engineer (Undergraduate)"
-period: "2022.03 – 2022.12"
+period: "2022.12 – 2023.03"
 teamSize: 4
 summary: "Android app for real-time art creation behavior recognition (HAR) and artwork region detection (PFD) in collaboration with Samsung C-Lab."
 keywords:
