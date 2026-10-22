@@ -1,7 +1,7 @@
 ---
 title: "Arcana Trigger: Hybrid Deck-Building Action Roguelike"
 category: independent
-role: "Core, Card Combat & Integration Developer"
+role: "Card Game Design, Card Combat, Floor-Level PCG & Integration"
 period: "2026.07 – 2026.08"
 teamSize: 2
 summary: "Unity 6/C# game prototype combining turn-based card combat and real-time shooting through shared battle state, developed for the NHN Game × AI Hackathon preliminary submission."
@@ -22,7 +22,7 @@ slug: "arcana-trigger"
 
 Arcana Trigger combines turn-based deck-building with real-time top-down shooting. A player can switch to action combat when a difficult hand limits their options, or use card strategy when dodging and aiming are challenging. Both modes share health and status effects so that switching changes how the player fights while preserving the same battle.
 
-Developed by a two-person team for the **NHN Game × AI Hackathon 2026 preliminary submission**, this project broadened my experience from game AI research to implementing a playable game's rules, interfaces and progression.
+Co-designed and developed by a two-person team over approximately two weeks for the **NHN Game × AI Hackathon 2026 preliminary submission**, this project broadened my experience from game AI research to implementing a playable game's rules, interfaces and progression. I was responsible for card game design, card combat, floor-level procedural generation and related integration.
 
 [Play the Web Demo](https://calendar3450.github.io/NHNAIGameProject/) · [Source Code](https://github.com/calendar3450/NHNAIGameProject)
 
@@ -30,7 +30,7 @@ Developed by a two-person team for the **NHN Game × AI Hackathon 2026 prelimina
 
 - **Core and card combat:** deck, hand, discard, energy and turn resolution; shared battle state and card/action session transitions.
 - **Cross-mode rules:** weapon-dependent attack cards, shared burn and slow effects, enemy intentions and boss card patterns.
-- **Procedural dungeons:** seed-based room and corridor generation, connectivity validation, obstacles, exploration visibility and integration with the game scene.
+- **Floor-level procedural generation:** implemented PCG that randomly generates the entire level on each floor, including seed-based room and corridor generation, connectivity validation, obstacles, exploration visibility and integration with the game scene.
 - **Progression and presentation:** card rewards and removal, combat HUD, floor transitions, endless-run scoring and game-over results.
 - **Integration and verification:** documented rules and interfaces, scene integration, and focused Unity EditMode/PlayMode regression checks.
 

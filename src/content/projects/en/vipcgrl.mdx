@@ -1,7 +1,7 @@
 ---
 title: "VIPCGRL: Human-Aligned Procedural Level Generation"
 category: funded
-role: "Co-Principal Investigator"
+role: "Co-first Author"
 period: "2023.09 – 2025.07"
 teamSize: 4
 summary: "Multimodal (text + level + sketch) shared embedding for human-aligned procedural content generation via reinforcement learning."
@@ -40,7 +40,7 @@ Game level design is a creative process where human designers express intent thr
 
 1. **Quadruple Contrastive Learning** — A shared 64-dimensional embedding space is trained to align text descriptions, level images, user sketches, and human/AI style signals via a multi-positive InfoNCE objective.
 
-2. **Human-Aligned DRL** — A PPO policy conditioned on the shared embedding receives an auxiliary similarity reward computed against a human reference database, encouraging the policy to produce levels closer to human style.
+2. **Human-Aligned DRL** — A PPO policy conditioned on the shared embedding receives an auxiliary reward based on the change in cosine similarity to the same human reference before and after a level edit, encouraging the policy to produce levels closer to human style.
 
 The sketch input pipeline uses edge detection + spline interpolation to convert levels to 224×224 grayscale sketches, enabling zero-shot cross-modal generalization at inference time.
 

@@ -21,22 +21,20 @@ const sorted = pubs.sort((a, b) => b.data.year - a.data.year || (b.data.date ?? 
       <h1 class="text-4xl font-bold text-[var(--text)] mb-2">Seo-Young Lee</h1>
       <p class="text-[var(--accent)] font-medium mb-1">{t("hero.title", locale)}</p>
       <p class="text-[var(--text-muted)] text-sm">Seoul, Korea · <a href="mailto:seoyoung.john@gmail.com" class="hover:text-[var(--accent)]">seoyoung.john@gmail.com</a></p>
-      <div class="flex gap-3 mt-4">
-        <a href="/cv/CV_SeoyoungLee.pdf" download
+      <div class="flex flex-wrap gap-3 mt-4">
+        <a href="/cv/CV_SeoyoungLee.pdf?v=20261022" download
           class="px-4 py-2 rounded-lg bg-[var(--accent)] text-white text-sm font-medium hover:bg-[var(--accent-hover)] transition-colors flex items-center gap-2">
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
           </svg>
           {t("cv.download_en", locale)}
         </a>
-        <span
-          class="px-4 py-2 rounded-lg border border-[var(--border)] text-sm font-medium flex items-center gap-2 opacity-40 cursor-not-allowed select-none"
-          title="Korean CV not yet available">
+        <a href="/portfolio/Portfolio_SeoyoungLee_KO.pdf?v=20261022" download class="px-4 py-2 rounded-lg border border-[var(--border)] text-sm font-medium flex items-center gap-2 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors">
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
           </svg>
-          {t("cv.download_ko", locale)}
-        </span>
+          {t("cv.download_portfolio", locale)}
+        </a>
       </div>
     </div>
 
@@ -45,8 +43,8 @@ const sorted = pubs.sort((a, b) => b.data.year - a.data.year || (b.data.date ?? 
         <section class="reveal">
           <SectionHeading title="Game Development" />
           <p class="font-semibold"><a href="/projects/arcana-trigger" class="text-[var(--accent)] hover:underline">Arcana Trigger</a></p>
-          <p class="text-sm text-[var(--text-muted)]">Core, card combat and integration developer · 2-person team · Jul–Aug 2026</p>
-          <p class="text-sm text-[var(--text-muted)] mt-2">Developed a Unity 6/C# hybrid deck-building action roguelike for the NHN Game × AI Hackathon preliminary submission. Implemented card combat, shared state and mode transitions, procedural dungeons, rewards and run scoring. The team did not advance beyond the preliminary round.</p>
+          <p class="text-sm text-[var(--text-muted)]">Card Game Design, Card Combat, Floor-Level PCG & Integration · 2-person team · Jul–Aug 2026 · Approximately 2 weeks</p>
+          <p class="text-sm text-[var(--text-muted)] mt-2">Co-designed and developed a Unity 6/C# hybrid deck-building and bullet-hell action game in a two-person team over approximately two weeks for the NHN Game × AI Hackathon preliminary submission. I was responsible for card game design, card combat, PCG that randomly generates the entire level on each floor, and related integration. The team did not advance beyond the preliminary round.</p>
         </section>
 
         <!-- Education -->

@@ -4,7 +4,7 @@ category: industry
 role: "Research Engineer (Undergraduate)"
 period: "2022.12 – 2023.03"
 teamSize: 4
-summary: "Android app for real-time art creation behavior recognition (HAR) and artwork region detection (PFD) in collaboration with Samsung C-Lab."
+summary: "Contributed to HAR model design, training and evaluation, model conversion, and Android inference integration in a Samsung C-Lab project on art activity recognition and artwork-region detection."
 keywords:
   - "activity recognition"
   - "object detection"

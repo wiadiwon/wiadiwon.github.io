@@ -15,15 +15,15 @@ const sorted = pubs.sort((a, b) => b.data.year - a.data.year || (b.data.date ?? 
       <h1 class="text-4xl font-bold text-[var(--text)] mb-2">이서영</h1>
       <p class="text-[var(--accent)] font-medium mb-1">{t("hero.title", locale)}</p>
       <p class="text-[var(--text-muted)] text-sm">서울, 대한민국 · <a href="mailto:seoyoung.john@gmail.com" class="hover:text-[var(--accent)]">seoyoung.john@gmail.com</a></p>
-      <div class="flex gap-3 mt-4">
-        <a href="/cv/CV_SeoyoungLee.pdf" download class="px-4 py-2 rounded-lg bg-[var(--accent)] text-white text-sm font-medium hover:bg-[var(--accent-hover)] transition-colors flex items-center gap-2">
+      <div class="flex flex-wrap gap-3 mt-4">
+        <a href="/cv/CV_SeoyoungLee.pdf?v=20261022" download class="px-4 py-2 rounded-lg bg-[var(--accent)] text-white text-sm font-medium hover:bg-[var(--accent-hover)] transition-colors flex items-center gap-2">
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
           {t("cv.download_en", locale)}
         </a>
-        <span class="px-4 py-2 rounded-lg border border-[var(--border)] text-sm font-medium flex items-center gap-2 opacity-40 cursor-not-allowed select-none" title="한국어 CV 준비 중">
+        <a href="/portfolio/Portfolio_SeoyoungLee_KO.pdf?v=20261022" download class="px-4 py-2 rounded-lg border border-[var(--border)] text-sm font-medium flex items-center gap-2 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors">
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-          {t("cv.download_ko", locale)}
-        </span>
+          {t("cv.download_portfolio", locale)}
+        </a>
       </div>
     </div>
 
@@ -32,8 +32,8 @@ const sorted = pubs.sort((a, b) => b.data.year - a.data.year || (b.data.date ?? 
         <section class="reveal">
           <SectionHeading title="게임 개발 경험" />
           <p class="font-semibold"><a href="/ko/projects/arcana-trigger" class="text-[var(--accent)] hover:underline">Arcana Trigger</a></p>
-          <p class="text-sm text-[var(--text-muted)]">코어·카드 전투·통합 개발 · 2인 팀 · 2026.07–08</p>
-          <p class="text-sm text-[var(--text-muted)] mt-2">NHN Game × AI Hackathon 예선 출품을 위해 Unity 6/C# 하이브리드 덱빌딩 액션 로그라이크를 개발했습니다. 카드 전투, 공유 상태와 모드 전환, 절차적 던전, 보상과 런 점수 시스템을 구현했습니다. 예선을 통과하지 못했으며, 실제 게임 구현과 통합 경험에 초점을 둡니다.</p>
+          <p class="text-sm text-[var(--text-muted)]">카드 게임 기획·카드 전투·층별 레벨 PCG·통합 개발 · 2인 팀 · 2026.07–08 · 약 2주</p>
+          <p class="text-sm text-[var(--text-muted)] mt-2">NHN Game × AI Hackathon 예선 출품을 위해 2인 팀에서 약 2주간 Unity 6/C# 하이브리드 덱빌딩·탄막 액션 게임을 공동 기획·개발했습니다. 카드 게임 기획, 카드 전투, 매 층의 전체 레벨을 랜덤 생성하는 PCG와 관련 통합을 담당했습니다. 예선을 통과하지 못했으며, 실제 게임 구현과 통합 경험에 초점을 둡니다.</p>
         </section>
 
         <section class="reveal">
