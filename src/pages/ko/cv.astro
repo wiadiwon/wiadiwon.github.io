@@ -30,13 +30,6 @@ const sorted = pubs.sort((a, b) => b.data.year - a.data.year || (b.data.date ?? 
     <div class="grid md:grid-cols-[2fr_1fr] gap-12">
       <div class="space-y-12">
         <section class="reveal">
-          <SectionHeading title="게임 개발 경험" />
-          <p class="font-semibold"><a href="/ko/projects/arcana-trigger" class="text-[var(--accent)] hover:underline">Arcana Trigger</a></p>
-          <p class="text-sm text-[var(--text-muted)]">카드 게임 기획·카드 전투·층별 레벨 PCG·통합 개발 · 2인 팀 · 2026.07–08 · 약 2주</p>
-          <p class="text-sm text-[var(--text-muted)] mt-2">NHN Game × AI Hackathon 예선 출품을 위해 2인 팀에서 약 2주간 Unity 6/C# 하이브리드 덱빌딩·탄막 액션 게임을 공동 기획·개발했습니다. 카드 게임 기획, 카드 전투, 매 층의 전체 레벨을 랜덤 생성하는 PCG와 관련 통합을 담당했습니다. 예선을 통과하지 못했으며, 실제 게임 구현과 통합 경험에 초점을 둡니다.</p>
-        </section>
-
-        <section class="reveal">
           <SectionHeading title={t("cv.education", locale)} />
           <div class="space-y-6">
             <div class="border-l-2 border-[var(--accent)] pl-5">
@@ -110,6 +103,13 @@ const sorted = pubs.sort((a, b) => b.data.year - a.data.year || (b.data.date ?? 
             </div>
           </div>
         </section>
+        <section class="reveal">
+          <SectionHeading title="게임 해커톤 참여" />
+          <p class="font-semibold"><a href="/ko/projects/arcana-trigger" class="text-[var(--accent)] hover:underline">Arcana Trigger</a></p>
+          <p class="text-sm text-[var(--text-muted)]">카드 게임 기획·카드 전투·층별 레벨 PCG·통합 개발 · 2인 팀 · 2026.07–08 · 약 2주</p>
+          <p class="text-sm text-[var(--text-muted)] mt-2">NHN Game × AI Hackathon 예선 출품을 위해 2인 팀에서 약 2주간 Unity 6/C# 하이브리드 덱빌딩·탄막 액션 게임을 공동 기획·개발했습니다. 카드 게임 기획, 카드 전투, 매 층의 전체 레벨을 랜덤 생성하는 PCG와 관련 통합을 담당했습니다. 예선을 통과하지 못했으며, 실제 게임 구현과 통합 경험에 초점을 둡니다.</p>
+        </section>
+
         <section class="reveal">
           <SectionHeading title={t("cv.awards", locale)} />
           <div class="space-y-4 text-sm">
